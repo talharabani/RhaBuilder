@@ -1,0 +1,36 @@
+{
+  "name": "rha-builder",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.mjs",
+    "build:css": "tailwindcss -i ./src/app/globals-source.css -o ./src/app/globals.css",
+    "build": "npm run build:css && next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@hookform/resolvers": "^5.7.1",
+    "autoprefixer": "^10.5.4",
+    "clsx": "^2.1.1",
+    "framer-motion": "^13.1.0",
+    "next": "16.3.0",
+    "postcss": "^8.5.26",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-hook-form": "^7.85.0",
+    "tailwind-merge": "^3.6.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
+  }
+}
