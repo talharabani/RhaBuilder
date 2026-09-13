@@ -182,7 +182,7 @@ export default function AboutPage() {
                 Established 2006 Real Estate & Construction Leadership
               </p>
 
-              <h1 className="font-figtree font-bold text-[#1a2b4a] text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight mb-5">
+              <h1 className="font-figtree font-bold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-5">
                 About RHA Builders
               </h1>
 

@@ -94,7 +94,7 @@ export default function ServicesPage() {
                   <li aria-current="page" className="text-[#1a2b4a] font-bold">Services</li>
                 </ol>
               </nav>
-              <h1 className="font-figtree font-bold text-[#1a2b4a] text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight mb-5">
+              <h1 className="font-figtree font-bold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-5">
                 Our Services
               </h1>
               <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed max-w-2xl">
@@ -110,7 +110,7 @@ export default function ServicesPage() {
 
       {/* ─── PROCESS ───────────────────────────────────────────── */}
       <section
-        className="py-12 md:py-20 px-3 sm:px-6 lg:px-8 bg-[#fafaf8] border-t border-slate-200"
+        className="py-12 md:py-20 px-3 sm:px-6 lg:px-8 bg-white border-t border-slate-200"
         aria-labelledby="process-heading"
       >
         <div className="w-full max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-[4.5rem]">

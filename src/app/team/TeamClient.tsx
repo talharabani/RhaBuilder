@@ -53,7 +53,7 @@ export function TeamClient({ teamMembers }: TeamClientProps) {
                   </li>
                 </ol>
               </nav>
-              <h1 className="font-figtree font-bold text-[#1a2b4a] text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight mb-5">
+              <h1 className="font-figtree font-bold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-5">
                 Our Team
               </h1>
               <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed max-w-2xl">
@@ -176,7 +176,7 @@ export function TeamClient({ teamMembers }: TeamClientProps) {
               z-index: 50 !important;
             }
           `}</style>
-          <div className="fan-arc-container relative w-full flex items-end justify-center gap-3 sm:gap-4 md:gap-5 lg:gap-6 py-8" style={{ perspective: '1200px' }}>
+          <div className="fan-arc-container relative w-full flex items-end justify-center gap-2 sm:gap-3 md:gap-4 py-8" style={{ perspective: '1200px' }}>
             {executives.map((member, index) => {
               const total = executives.length;
               const mid = (total - 1) / 2;
@@ -193,7 +193,7 @@ export function TeamClient({ teamMembers }: TeamClientProps) {
                   style={{
                     transform: `rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`,
                     zIndex: total - Math.abs(offset) * 2,
-                    width: 'clamp(160px, 20vw, 280px)',
+                    width: 'clamp(110px, 16vw, 230px)',
                   }}
                   aria-label={`View profile for ${member.name}, ${member.jobTitle}`}
                 >

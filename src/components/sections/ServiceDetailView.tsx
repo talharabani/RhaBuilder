@@ -71,7 +71,7 @@ export function ServiceDetailView({ slug }: ServiceDetailViewProps) {
                 RHA Builders Service Specification
               </span>
 
-              <h1 className="font-sans font-black text-[#1a2b4a] text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-tight mb-5">
+              <h1 className="font-figtree font-bold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-5">
                 {service.title}
               </h1>
               <p className="mt-4 text-base sm:text-lg md:text-xl max-w-2xl text-slate-600 font-sans leading-relaxed">

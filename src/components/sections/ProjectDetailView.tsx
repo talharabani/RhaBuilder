@@ -89,7 +89,7 @@ export function ProjectDetailView({ slug }: ProjectDetailViewProps) {
             </p>
 
             {/* Project Title */}
-            <h1 className="font-sans font-extrabold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl leading-[1.1] tracking-tight mb-4">
+            <h1 className="font-figtree font-bold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-4">
               {project.name}
             </h1>
 
