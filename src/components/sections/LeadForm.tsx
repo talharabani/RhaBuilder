@@ -88,10 +88,8 @@ export function LeadForm({
   );
   const inputClass = (hasError?: boolean) =>
     cn(
-      "w-full px-4 py-3 text-sm rounded-[var(--radius-button)] border transition-all duration-150 bg-white text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-accent)] focus:border-transparent",
-      hasError
-        ? "border-[var(--color-error)]"
-        : "border-[var(--color-border)] hover:border-[var(--color-text-muted)]"
+      "w-full px-1 py-3 text-[15px] bg-transparent text-[#1a2b4a] placeholder:text-slate-400 focus:outline-none transition-colors",
+      hasError ? "form-field-error" : "form-field-normal"
     );
   const errorClass = "flex items-center gap-1 mt-1.5 text-xs text-[var(--color-error)]";
 
@@ -158,6 +156,21 @@ export function LeadForm({
         </div>
       )}
 
+      <style dangerouslySetInnerHTML={{__html: `
+        .form-field-normal {
+          border: none !important;
+          border-bottom: 1px solid #cbd5e1 !important;
+          border-radius: 0 !important;
+        }
+        .form-field-normal:focus {
+          border-bottom: 1px solid #0052cc !important;
+        }
+        .form-field-error {
+          border: none !important;
+          border-bottom: 1px solid #ef4444 !important;
+          border-radius: 0 !important;
+        }
+      `}} />
       <form
         onSubmit={handleSubmit(onSubmit)}
         noValidate
@@ -371,10 +384,10 @@ export function LeadForm({
         <div className="mt-6">
           <Button
             type="submit"
-            variant="primary"
             size="lg"
             disabled={isSubmitting}
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto font-bold shadow-md hover:shadow-lg transition-all"
+            style={{ borderRadius: '9999px', backgroundColor: '#0052cc', color: 'white', border: 'none' }}
           >
             {isSubmitting ? "Sending..." : "Send Enquiry"}
           </Button>

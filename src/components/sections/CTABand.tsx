@@ -25,10 +25,10 @@ export function CTABand({
     <section
       className={cn(
         "relative overflow-hidden",
-        variant === "dark" && "bg-[var(--color-surface-dark)]",
         variant === "accent" && "bg-[var(--color-brand-accent)]",
         variant === "light" && "bg-[var(--color-surface-secondary)]"
       )}
+      style={variant === "dark" ? { background: "linear-gradient(135deg, #0052cc 0%, #4da6ff 100%)" } : {}}
       aria-label="Call to action"
     >
       {/* Subtle background pattern */}
@@ -46,10 +46,10 @@ export function CTABand({
 
       <div className="container-site relative py-8 sm:py-10">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-          <div className="max-w-xl">
+          <div className="max-w-2xl">
             <h2
               className={cn(
-                "font-display font-semibold",
+                "font-sans font-extrabold text-3xl md:text-4xl tracking-tight leading-[1.1]",
                 variant === "dark"
                   ? "text-white"
                   : variant === "accent"
@@ -62,42 +62,69 @@ export function CTABand({
             {description && (
               <p
                 className={cn(
-                  "mt-3 text-base leading-relaxed",
+                  "mt-4 text-base md:text-lg leading-relaxed font-medium",
                   variant === "dark"
-                    ? "text-[var(--color-text-on-dark-muted)]"
+                    ? ""
                     : variant === "accent"
                     ? "text-[var(--color-brand-primary)]/80"
                     : "text-[var(--color-text-muted)]"
                 )}
+                style={variant === "dark" ? { color: "#e6f0fa" } : undefined}
               >
                 {description}
               </p>
             )}
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 shrink-0">
+            <style dangerouslySetInnerHTML={{__html: `
+              .cta-btn-3d-light {
+                box-shadow: 0 6px 0 #cbd5e1;
+                transform: translateY(0);
+              }
+              .cta-btn-3d-light:hover {
+                box-shadow: 0 4px 0 #94a3b8;
+                transform: translateY(2px);
+              }
+              .cta-btn-3d-light:active {
+                box-shadow: 0 0 0 #cbd5e1;
+                transform: translateY(6px);
+              }
+              .cta-btn-3d-dark {
+                box-shadow: 0 6px 0 #003380;
+                transform: translateY(0);
+              }
+              .cta-btn-3d-dark:hover {
+                box-shadow: 0 4px 0 #002255;
+                transform: translateY(2px);
+              }
+              .cta-btn-3d-dark:active {
+                box-shadow: 0 0 0 #003380;
+                transform: translateY(6px);
+              }
+            `}} />
             <Link
               href={primaryHref}
               className={cn(
-                "inline-flex items-center gap-2 px-7 py-3.5 text-sm font-extrabold rounded-[var(--radius-button)] transition-all duration-200 shadow-md font-sans hover:-translate-y-0.5 active:translate-y-0 cursor-pointer",
+                "inline-flex items-center gap-2 px-8 py-4 text-[15px] font-extrabold rounded-full transition-all duration-150 font-sans cursor-pointer",
                 variant === "dark" || variant === "accent"
-                  ? "bg-white text-[#1a2b4a] hover:bg-slate-100 hover:shadow-xl"
-                  : "bg-[var(--color-brand-primary)] text-white hover:bg-[#15233d] hover:shadow-xl"
+                  ? "bg-white text-[#0b1b3d] cta-btn-3d-light"
+                  : "bg-[#0052cc] text-white cta-btn-3d-dark"
               )}
             >
               {primaryLabel}
-              <ArrowRightIcon className="w-4 h-4 shrink-0" aria-hidden="true" />
+              <ArrowRightIcon className="w-5 h-5 shrink-0" strokeWidth={2.5} aria-hidden="true" />
             </Link>
             {secondaryLabel && secondaryHref && (
               <Link
                 href={secondaryHref}
                 className={cn(
-                  "inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-[var(--radius-button)] transition-all duration-200 border-2 font-sans cursor-pointer",
+                  "inline-flex items-center gap-2 px-8 py-4 text-[15px] font-extrabold rounded-full transition-all duration-150 font-sans cursor-pointer",
                   variant === "dark"
-                    ? "text-white border-white/40 hover:bg-white/10 hover:border-white"
+                    ? "text-white border-2 border-white/40 hover:bg-white/10 hover:border-white"
                     : variant === "accent"
-                    ? "text-[var(--color-brand-primary)] border-[var(--color-brand-primary)]/40 hover:bg-[var(--color-brand-primary)]/10"
-                    : "text-[var(--color-brand-primary)] border-[var(--color-brand-primary)] hover:bg-[var(--color-brand-primary)]/5"
+                    ? "text-[var(--color-brand-primary)] border-2 border-[var(--color-brand-primary)]/40 hover:bg-[var(--color-brand-primary)]/10"
+                    : "text-[#0052cc] border-2 border-[#0052cc] hover:bg-[#0052cc]/5"
                 )}
               >
                 {secondaryLabel}

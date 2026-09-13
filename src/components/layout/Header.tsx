@@ -40,7 +40,7 @@ export function Header() {
   const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileTeamOpen, setMobileTeamOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(true);
   const [activeMegaMenu, setActiveMegaMenu] = useState<"projects" | "services" | "team" | null>(null);
   const [hoveredServiceMegaMenu, setHoveredServiceMegaMenu] = useState({
     title: "Commercial Plaza Construction & Shop Sales",
@@ -69,9 +69,7 @@ export function Header() {
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    // Navbar is now permanently solid, so scroll tracking for background is disabled.
   }, []);
 
   useEffect(() => {
@@ -87,7 +85,7 @@ export function Header() {
   const handleMouseLeaveNav = () => {
     hoverTimeoutRef.current = setTimeout(() => {
       setActiveMegaMenu(null);
-    }, 180);
+    }, 400);
   };
 
   // Trap focus inside mobile menu
@@ -140,29 +138,25 @@ export function Header() {
   return (
     <>
       <header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200"
-            : "bg-gradient-to-b from-slate-950/80 via-slate-950/40 to-transparent"
-        )}
+        className="sticky top-0 z-50 pt-2 sm:pt-3 px-3 sm:px-6 lg:px-8 w-full max-w-[1600px] mx-auto pointer-events-none transition-all duration-300"
         role="banner"
       >
-        <div className="container-site relative">
-          <div className="flex items-center justify-between h-18 sm:h-20 py-3 sm:py-4">
+        <div className="relative w-full">
+          <div className="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-3xl sm:rounded-[2rem] relative px-4 sm:px-6 pointer-events-auto">
+          <div className="flex items-center justify-between h-[4.5rem] sm:h-20 py-2 sm:py-2.5">
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a2b4a] rounded"
+              className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1a2b4a] rounded-lg"
               aria-label="RHA Builders — Return to homepage"
             >
-              <Logo scrolled={scrolled} height={38} />
+              <Logo scrolled={scrolled} height={48} />
             </Link>
 
             {/* Desktop Nav */}
             <nav
               aria-label="Main navigation"
-              className="hidden lg:flex items-center gap-1.5"
+              className="hidden lg:flex items-center gap-1 sm:gap-2"
             >
               {navLinks.map((link) => {
                 const isActive =
@@ -192,16 +186,16 @@ export function Header() {
                             : "rgba(255, 255, 255, 0.85)",
                         }}
                         className={cn(
-                          "px-3.5 py-2 text-sm font-semibold transition-colors duration-200 rounded-lg relative inline-flex items-center gap-1 group",
+                          "px-3.5 py-2 text-[15px] font-semibold transition-colors duration-200 rounded-lg relative inline-flex items-center gap-1 group",
                           isActive
                             ? "font-bold"
-                            : "hover:text-white"
+                            : "hover:text-[#0052cc]"
                         )}
                       >
                         <span>{link.label}</span>
                         <ChevronDownIcon
                           className={cn(
-                            "w-3.5 h-3.5 transition-transform duration-200",
+                            "w-4 h-4 transition-transform duration-200",
                             isMenuOpen ? "rotate-180 text-[#0052cc]" : ""
                           )}
                         />
@@ -225,11 +219,11 @@ export function Header() {
                         : "rgba(255, 255, 255, 0.85)",
                     }}
                     className={cn(
-                      "px-3.5 py-2 text-sm font-semibold transition-colors duration-200 rounded-lg relative",
+                      "px-3.5 py-2 text-[15px] font-semibold transition-colors duration-200 rounded-lg relative",
                       "after:absolute after:bottom-0 after:left-3.5 after:right-3.5 after:h-0.5 after:rounded-full after:transition-all after:duration-200",
                       isActive
                         ? "after:bg-[#1a2b4a] after:opacity-100 font-bold"
-                        : "hover:text-white after:opacity-0 hover:after:opacity-100 after:bg-[#1a2b4a]"
+                        : "hover:text-[#0052cc] after:opacity-0 hover:after:opacity-100 after:bg-[#1a2b4a]"
                     )}
                   >
                     {link.label}
@@ -242,12 +236,7 @@ export function Header() {
             <div className="hidden lg:flex items-center gap-3">
               <Link
                 href="/contact"
-                style={{
-                  backgroundColor: scrolled ? "#1a2b4a" : "transparent",
-                  color: "#ffffff",
-                  borderColor: scrolled ? "#1a2b4a" : "rgba(255,255,255,0.4)",
-                }}
-                className="inline-flex items-center px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xl border-2 transition-all duration-200 hover:bg-[#1a2b4a] hover:border-[#1a2b4a] shadow-sm"
+                className="inline-flex items-center px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xl border-2 border-[#0052cc] bg-[#0052cc] text-white transition-all duration-200 hover:bg-transparent hover:text-[#0052cc]"
               >
                 Discuss a Project
               </Link>
@@ -262,7 +251,7 @@ export function Header() {
               aria-controls="mobile-nav"
               onClick={() => setMobileOpen((v) => !v)}
               className={cn(
-                "lg:hidden p-2.5 rounded-xl border transition-all duration-200 active:scale-95",
+                "lg:hidden p-3 rounded-xl border transition-all duration-200 active:scale-95",
                 scrolled
                   ? "text-[#1a2b4a] bg-slate-100 border-slate-200"
                   : "text-white bg-white/10 border-white/20 backdrop-blur-md"
@@ -287,7 +276,7 @@ export function Header() {
               transition={{ duration: 0.18, ease: "easeOut" }}
               onMouseEnter={() => handleMouseEnterNav("projects")}
               onMouseLeave={handleMouseLeaveNav}
-              className="hidden lg:block absolute top-full left-0 right-0 w-full bg-white border-t border-b border-slate-200 shadow-2xl shadow-slate-900/15 text-slate-800 z-40 overflow-hidden"
+              className="hidden lg:block absolute top-[calc(100%+0.75rem)] left-0 right-0 w-full bg-white border border-slate-200 shadow-2xl shadow-slate-900/15 text-slate-800 z-40 overflow-hidden rounded-2xl pointer-events-auto"
             >
               <div className="container-site py-8">
                 <div className="grid grid-cols-12 gap-8 items-start">
@@ -313,15 +302,12 @@ export function Header() {
                               badge: "Flagship Plaza",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="flex items-center justify-between text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="flex items-center justify-between text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             <span>Ansa Tower — Shahalmi</span>
-                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
-                              Ongoing
-                            </span>
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Opposite Mochi Gate, Shahalmi Lahore (25% Advance & 3-Yr Plan)
                           </p>
                         </Link>
@@ -339,12 +325,12 @@ export function Header() {
                               badge: "Shops For Sale",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Shahalmi Commercial Shops
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Prime retail shop sales with 3-year quarterly payment schedule
                           </p>
                         </Link>
@@ -357,17 +343,17 @@ export function Header() {
                             setHoveredProjectMegaMenu({
                               title: "Commercial Plazas (Islamabad)",
                               description: "F-10 Markaz & G-11 Markaz multi-story commercial plaza developments and retail hubs.",
-                              image: "/images/projects/capital-plaza-hero.jpg",
+                              image: "/images/projects/f10-markaz-cover.jpg",
                               slug: "rha-capital-plaza-islamabad",
                               badge: "Capital Region",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Commercial Plazas (Islamabad)
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             F-10 Markaz & G-11 Markaz commercial developments
                           </p>
                         </Link>
@@ -391,17 +377,17 @@ export function Header() {
                           setHoveredProjectMegaMenu({
                             title: "Pakistani Town P1 & P2",
                             description: "Completed 5 Marla & 10 Marla turnkey residential family houses in Pakistani Town, Islamabad.",
-                            image: "/images/projects/residential-houses-hero.jpg",
+                            image: "/images/projects/pakistani-town-p1-cover.jpg",
                             slug: "residential-houses-pakistani-town-phase-1",
                             badge: "Completed",
                           })
                         }
-                        className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                        className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                       >
-                        <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                        <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                           Pakistani Town P1 & P2
                         </div>
-                        <p className="text-[11px] text-slate-500 font-sans mt-0.5 leading-relaxed">
+                        <p className="text-[11px] text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                           Completed 5M & 10M Houses (Islamabad)
                         </p>
                       </Link>
@@ -412,17 +398,17 @@ export function Header() {
                           setHoveredProjectMegaMenu({
                             title: "Police Foundation Society",
                             description: "Turnkey 5M & 10M family residences built with premium masonry and luxury finishes.",
-                            image: "/images/services/residential-construction.jpg",
+                            image: "/images/projects/police-foundation-cover.jpg",
                             slug: "residential-houses-police-foundation-society",
                             badge: "Turnkey Houses",
                           })
                         }
-                        className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                        className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                       >
-                        <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                        <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                           Police Foundation
                         </div>
-                        <p className="text-[11px] text-slate-500 font-sans mt-0.5 leading-relaxed">
+                        <p className="text-[11px] text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                           Turnkey 5M & 10M Residences
                         </p>
                       </Link>
@@ -433,17 +419,17 @@ export function Header() {
                           setHoveredProjectMegaMenu({
                             title: "Bahria Town Phase 7",
                             description: "Luxury family villas (5M, 10M, 1 Kanal) constructed according to client specifications.",
-                            image: "/images/projects/residential-houses-hero.jpg",
+                            image: "/images/projects/bahria-town-p7-cover.jpg",
                             slug: "residential-houses-bahria-town-phase-7",
                             badge: "Luxury Villas",
                           })
                         }
-                        className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                        className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                       >
-                        <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                        <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                           Bahria Town Phase 7
                         </div>
-                        <p className="text-[11px] text-slate-500 font-sans mt-0.5 leading-relaxed">
+                        <p className="text-[11px] text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                           Luxury Villas (5M, 10M, 1 Kanal)
                         </p>
                       </Link>
@@ -454,17 +440,17 @@ export function Header() {
                           setHoveredProjectMegaMenu({
                             title: "Federation Society",
                             description: "Custom completed family houses delivered with full handover & warranties.",
-                            image: "/images/services/residential-construction.jpg",
+                            image: "/images/projects/federation-society-cover.jpg",
                             slug: "residential-houses-federation-society",
                             badge: "Residences",
                           })
                         }
-                        className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                        className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                       >
-                        <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                        <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                           Federation Society
                         </div>
-                        <p className="text-[11px] text-slate-500 font-sans mt-0.5 leading-relaxed">
+                        <p className="text-[11px] text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                           Custom Completed Houses
                         </p>
                       </Link>
@@ -484,7 +470,6 @@ export function Header() {
                   {/* Subcategory 3: Browse By Filter */}
                   <div className="col-span-2 space-y-4">
                     <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
-                      <SparklesIcon className="w-5 h-5 text-[#0052cc]" />
                       <h3 className="font-sans text-xs font-extrabold uppercase tracking-wider text-[#0052cc]">
                         Browse By Status
                       </h3>
@@ -503,10 +488,9 @@ export function Header() {
                               badge: "Ongoing Build",
                             })
                           }
-                          className="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 text-xs font-bold text-[#1a2b4a] hover:text-[#0052cc] border border-transparent hover:border-slate-200 transition-all"
+                          className="flex items-center justify-between p-2.5 rounded-xl rha-card text-xs font-bold text-[#1a2b4a] hover:text-white border border-transparent transition-all"
                         >
                           <span>Ongoing / In Progress</span>
-                          <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
                         </Link>
                       </li>
                       <li>
@@ -517,15 +501,14 @@ export function Header() {
                             setHoveredProjectMegaMenu({
                               title: "Completed Portfolio",
                               description: "Delivered commercial plazas and ready-to-move residential family houses.",
-                              image: "/images/projects/residential-houses-hero.jpg",
+                              image: "/images/projects/pakistani-town-p1-cover.jpg",
                               slug: "residential-houses-pakistani-town-phase-1",
                               badge: "Completed",
                             })
                           }
-                          className="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 text-xs font-bold text-[#1a2b4a] hover:text-[#0052cc] border border-transparent hover:border-slate-200 transition-all"
+                          className="flex items-center justify-between p-2.5 rounded-xl rha-card text-xs font-bold text-[#1a2b4a] hover:text-white border border-transparent transition-all"
                         >
                           <span>Completed Projects</span>
-                          <span className="w-2 h-2 rounded-full bg-emerald-500" />
                         </Link>
                       </li>
                       <li className="pt-2">
@@ -574,7 +557,7 @@ export function Header() {
                         <Link
                           href={`/projects/${hoveredProjectMegaMenu.slug}`}
                           onClick={() => setActiveMegaMenu(null)}
-                          className="mt-4 flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-bold text-white bg-[#1a2b4a] hover:bg-[#0052cc] rounded-xl transition-all shadow-sm"
+                          className="mt-4 flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-bold text-white bg-[#0052cc] hover:bg-blue-700 rounded-xl transition-all shadow-sm"
                         >
                           <span>Explore Project</span>
                           <ArrowRightIcon className="w-3.5 h-3.5" />
@@ -598,7 +581,7 @@ export function Header() {
               transition={{ duration: 0.18, ease: "easeOut" }}
               onMouseEnter={() => handleMouseEnterNav("services")}
               onMouseLeave={handleMouseLeaveNav}
-              className="hidden lg:block absolute top-full left-0 right-0 w-full bg-white border-t border-b border-slate-200 shadow-2xl shadow-slate-900/15 text-slate-800 z-40 overflow-hidden"
+              className="hidden lg:block absolute top-[calc(100%+0.75rem)] left-0 right-0 w-full bg-white border border-slate-200 shadow-2xl shadow-slate-900/15 text-slate-800 z-40 overflow-hidden rounded-2xl pointer-events-auto"
             >
               <div className="container-site py-8">
                 <div className="grid grid-cols-12 gap-8 items-start">
@@ -624,15 +607,15 @@ export function Header() {
                               badge: "Core Specialty",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="flex items-center justify-between text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="flex items-center justify-between text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             <span>Commercial Plaza & Shop Sales</span>
                             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-200">
                               Core
                             </span>
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Shahalmi Lahore Plazas, 25% Advance booking & 3-year quarterly plans
                           </p>
                         </Link>
@@ -650,12 +633,12 @@ export function Header() {
                               badge: "Commercial",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Commercial Real Estate Development
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Grade-A office space, retail centers, and mixed-use commercial hubs
                           </p>
                         </Link>
@@ -685,12 +668,12 @@ export function Header() {
                               badge: "Residential",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Residential House Construction
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Custom building on client plots and sale of completed family houses
                           </p>
                         </Link>
@@ -708,12 +691,12 @@ export function Header() {
                               badge: "Turnkey",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Turnkey Solutions
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Integrated design, build, luxury fit-outs, and single-source handover
                           </p>
                         </Link>
@@ -743,12 +726,12 @@ export function Header() {
                               badge: "Management",
                             })
                           }
-                          className="group block p-2 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Construction Management
                           </div>
-                          <p className="text-[11px] text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-[11px] text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Client-side trade management & quality control
                           </p>
                         </Link>
@@ -766,12 +749,12 @@ export function Header() {
                               badge: "Design",
                             })
                           }
-                          className="group block p-2 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Design & Planning Coordination
                           </div>
-                          <p className="text-[11px] text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-[11px] text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             3D BIM coordination & planning consents
                           </p>
                         </Link>
@@ -789,12 +772,12 @@ export function Header() {
                               badge: "Advisory",
                             })
                           }
-                          className="group block p-2 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-xs font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Strategic Consultation
                           </div>
-                          <p className="text-[11px] text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-[11px] text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Feasibility brief & cost planning guidance
                           </p>
                         </Link>
@@ -845,7 +828,7 @@ export function Header() {
                         <Link
                           href={`/services/${hoveredServiceMegaMenu.slug}`}
                           onClick={() => setActiveMegaMenu(null)}
-                          className="mt-4 flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-bold text-white bg-[#1a2b4a] hover:bg-[#0052cc] rounded-xl transition-all shadow-sm"
+                          className="mt-4 flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-bold text-white bg-[#0052cc] hover:bg-blue-700 rounded-xl transition-all shadow-sm"
                         >
                           <span>Explore {hoveredServiceMegaMenu.badge}</span>
                           <ArrowRightIcon className="w-3.5 h-3.5" />
@@ -869,7 +852,7 @@ export function Header() {
               transition={{ duration: 0.18, ease: "easeOut" }}
               onMouseEnter={() => handleMouseEnterNav("team")}
               onMouseLeave={handleMouseLeaveNav}
-              className="hidden lg:block absolute top-full left-0 right-0 w-full bg-white border-t border-b border-slate-200 shadow-2xl shadow-slate-900/15 text-slate-800 z-40 overflow-hidden"
+              className="hidden lg:block absolute top-[calc(100%+0.75rem)] left-0 right-0 w-full bg-white border border-slate-200 shadow-2xl shadow-slate-900/15 text-slate-800 z-40 overflow-hidden rounded-2xl pointer-events-auto"
             >
               <div className="container-site py-8">
                 <div className="grid grid-cols-12 gap-8 items-start">
@@ -896,15 +879,15 @@ export function Header() {
                               badge: "CEO & Founder",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="flex items-center justify-between text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="flex items-center justify-between text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             <span>Faryad Hussain</span>
                             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-200">
                               CEO & Founder
                             </span>
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Founded RHA Builders in 2006. 20+ years development & construction leadership
                           </p>
                         </Link>
@@ -923,12 +906,12 @@ export function Header() {
                               badge: "COO",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Muhammad Fayaz — COO
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Operations management, site logistics, and project scheduling
                           </p>
                         </Link>
@@ -947,12 +930,12 @@ export function Header() {
                               badge: "Deputy COO",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Rameez Faryad — Deputy COO
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Client advisory, shop sales, and installment contract management
                           </p>
                         </Link>
@@ -983,12 +966,12 @@ export function Header() {
                               badge: "Site Engineer",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Muhammad Arash — Site Engineer
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             On-site structural engineering inspections & technical QA
                           </p>
                         </Link>
@@ -1007,12 +990,12 @@ export function Header() {
                               badge: "Accounts & Admin",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Asad Ali — Accounts & Admin
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Financial management & client installment ledger accounting
                           </p>
                         </Link>
@@ -1031,12 +1014,12 @@ export function Header() {
                               badge: "Sales Advisory",
                             })
                           }
-                          className="group block p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all"
+                          className="group block p-2.5 rounded-xl rha-card border border-transparent transition-all"
                         >
-                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors">
+                          <div className="text-sm font-bold text-[#1a2b4a] group-hover:text-white transition-colors relative z-10">
                             Asghar Ali & Malik Shafique
                           </div>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5 leading-relaxed">
+                          <p className="text-xs text-slate-500 group-hover:text-white/80 font-sans mt-0.5 relative z-10 leading-relaxed">
                             Front Desk & Sales Executives for buyer consultation
                           </p>
                         </Link>
@@ -1067,7 +1050,7 @@ export function Header() {
                               badge: "Leadership",
                             })
                           }
-                          className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 text-xs font-bold text-[#1a2b4a] hover:text-[#0052cc] border border-transparent hover:border-slate-200 transition-all"
+                          className="flex items-center justify-between p-2 rounded-xl rha-card text-xs font-bold text-[#1a2b4a] hover:text-white border border-transparent transition-all"
                         >
                           <span>Executive Management</span>
                           <span className="text-[10px] text-slate-400 font-normal">3 Members</span>
@@ -1087,7 +1070,7 @@ export function Header() {
                               badge: "Client Relations",
                             })
                           }
-                          className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 text-xs font-bold text-[#1a2b4a] hover:text-[#0052cc] border border-transparent hover:border-slate-200 transition-all"
+                          className="flex items-center justify-between p-2 rounded-xl rha-card text-xs font-bold text-[#1a2b4a] hover:text-white border border-transparent transition-all"
                         >
                           <span>Front Desk & Sales Advisory</span>
                           <span className="text-[10px] text-slate-400 font-normal">2 Members</span>
@@ -1107,7 +1090,7 @@ export function Header() {
                               badge: "Operations",
                             })
                           }
-                          className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 text-xs font-bold text-[#1a2b4a] hover:text-[#0052cc] border border-transparent hover:border-slate-200 transition-all"
+                          className="flex items-center justify-between p-2 rounded-xl rha-card text-xs font-bold text-[#1a2b4a] hover:text-white border border-transparent transition-all"
                         >
                           <span>Site Engineering & Accounts</span>
                           <span className="text-[10px] text-slate-400 font-normal">3 Members</span>
@@ -1161,7 +1144,7 @@ export function Header() {
                         <Link
                           href={`/team/${hoveredTeamMegaMenu.slug}`}
                           onClick={() => setActiveMegaMenu(null)}
-                          className="mt-3 flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-bold text-white bg-[#1a2b4a] hover:bg-[#0052cc] rounded-xl transition-all shadow-sm"
+                          className="mt-3 flex items-center justify-center gap-1.5 w-full py-2.5 text-xs font-bold text-white bg-[#0052cc] hover:bg-blue-700 rounded-xl transition-all shadow-sm"
                         >
                           <span>Read Profile</span>
                           <ArrowRightIcon className="w-3.5 h-3.5" />
@@ -1174,6 +1157,7 @@ export function Header() {
             </motion.div>
           )}
         </AnimatePresence>
+        </div>
       </header>
 
       {/* Mobile Nav Overlay */}
@@ -1472,3 +1456,5 @@ export function Header() {
     </>
   );
 }
+
+

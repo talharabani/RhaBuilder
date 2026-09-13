@@ -38,20 +38,20 @@ const footerLinks = {
 export function Footer() {
   return (
     <footer
-      style={{ backgroundColor: "var(--color-surface-dark)" }}
+      className="bg-blue-100"
       role="contentinfo"
       aria-label="Site footer"
     >
       {/* Main footer content */}
-      <div className="container-site pt-10 pb-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+      <div className="container-site pt-8 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link href="/" aria-label="RHA Builders homepage">
-              <Logo variant="white" height={44} />
+              <Logo variant="blue" height={44} />
             </Link>
             <p
-              className="mt-5 text-sm leading-relaxed max-w-xs text-slate-300"
+              className="mt-4 text-xs leading-relaxed max-w-xs text-slate-600"
             >
               RHA Builder is a real estate development and construction company
               focused on creating well-planned residential and commercial
@@ -63,13 +63,13 @@ export function Footer() {
               <li>
                 <a
                   href={SITE_CONTACT.phoneTel}
-                  className="flex items-center gap-2.5 text-sm text-slate-300 hover:text-white transition-colors group"
+                  className="flex items-center gap-3 text-sm text-slate-600 hover:text-brand-primary transition-colors group"
                 >
                   <PhoneIcon
-                    className="w-4 h-4 shrink-0 text-[var(--color-brand-accent)] group-hover:text-white transition-colors"
+                    className="w-4 h-4 shrink-0 text-brand-secondary group-hover:text-brand-primary transition-colors"
                     aria-hidden="true"
                   />
-                  <span className="group-hover:text-white transition-colors font-sans">
+                  <span className="font-sans">
                     {SITE_CONTACT.phoneDisplay}
                   </span>
                 </a>
@@ -79,13 +79,13 @@ export function Footer() {
                   href={SITE_CONTACT.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-sm text-slate-300 hover:text-white transition-colors group"
+                  className="flex items-center gap-3 text-sm text-slate-600 hover:text-brand-primary transition-colors group"
                 >
                   <WhatsAppIcon
-                    className="w-4 h-4 shrink-0 text-[#25D366] fill-current"
+                    className="w-4 h-4 shrink-0 text-brand-secondary group-hover:text-[#25D366] transition-colors fill-current"
                     aria-hidden="true"
                   />
-                  <span className="group-hover:text-white transition-colors font-sans">
+                  <span className="font-sans">
                     WhatsApp ({SITE_CONTACT.phoneDisplay})
                   </span>
                 </a>
@@ -93,13 +93,13 @@ export function Footer() {
               <li>
                 <a
                   href={SITE_CONTACT.emailMailto}
-                  className="flex items-center gap-2.5 text-sm text-slate-300 hover:text-white transition-colors group"
+                  className="flex items-center gap-3 text-sm text-slate-600 hover:text-brand-primary transition-colors group"
                 >
                   <EnvelopeIcon
-                    className="w-4 h-4 shrink-0 text-[var(--color-brand-accent)] group-hover:text-white transition-colors"
+                    className="w-4 h-4 shrink-0 text-brand-secondary group-hover:text-brand-primary transition-colors"
                     aria-hidden="true"
                   />
-                  <span className="group-hover:text-white transition-colors font-sans">
+                  <span className="font-sans">
                     {SITE_CONTACT.email}
                   </span>
                 </a>
@@ -109,14 +109,14 @@ export function Footer() {
                   href={SITE_CONTACT.googleMapsDirectionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-2.5 text-sm text-slate-300 hover:text-white transition-colors group"
+                  className="flex items-start gap-3 text-sm text-slate-600 hover:text-brand-primary transition-colors group"
                   title="Click to open directions in Google Maps"
                 >
                   <MapPinIcon
-                    className="w-4 h-4 shrink-0 mt-0.5 text-[var(--color-brand-accent)] group-hover:text-amber-300 transition-colors"
+                    className="w-4 h-4 shrink-0 mt-0.5 text-brand-secondary group-hover:text-brand-primary transition-colors"
                     aria-hidden="true"
                   />
-                  <address className="not-italic leading-snug font-sans group-hover:underline">
+                  <address className="not-italic leading-relaxed font-sans group-hover:underline">
                     {SITE_CONTACT.address}
                   </address>
                 </a>
@@ -125,9 +125,9 @@ export function Footer() {
           </div>
 
           {/* Company */}
-          <div>
+          <div className="pt-2 lg:pt-6">
             <h3
-              className="text-sm font-bold tracking-wider uppercase font-sans mb-4 text-[var(--color-brand-accent)]"
+              className="text-sm font-bold tracking-wider uppercase font-sans mb-4 text-brand-primary"
             >
               Company
             </h3>
@@ -136,7 +136,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm font-medium text-slate-300 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block font-sans"
+                    className="text-sm font-medium text-slate-600 hover:text-brand-accent hover:translate-x-1 transition-all duration-300 inline-block font-sans"
                   >
                     {link.label}
                   </Link>
@@ -146,9 +146,9 @@ export function Footer() {
           </div>
 
           {/* Projects */}
-          <div>
+          <div className="pt-2 lg:pt-6">
             <h3
-              className="text-sm font-bold tracking-wider uppercase font-sans mb-4 text-[var(--color-brand-accent)]"
+              className="text-sm font-bold tracking-wider uppercase font-sans mb-4 text-brand-primary"
             >
               Projects
             </h3>
@@ -157,7 +157,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm font-medium text-slate-300 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block font-sans"
+                    className="text-sm font-medium text-slate-600 hover:text-brand-accent hover:translate-x-1 transition-all duration-300 inline-block font-sans"
                   >
                     {link.label}
                   </Link>
@@ -167,9 +167,9 @@ export function Footer() {
           </div>
 
           {/* Services */}
-          <div>
+          <div className="pt-2 lg:pt-6">
             <h3
-              className="text-sm font-bold tracking-wider uppercase font-sans mb-4 text-[var(--color-brand-accent)]"
+              className="text-sm font-bold tracking-wider uppercase font-sans mb-4 text-brand-primary"
             >
               Services
             </h3>
@@ -178,7 +178,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm font-medium text-slate-300 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block font-sans"
+                    className="text-sm font-medium text-slate-600 hover:text-brand-accent hover:translate-x-1 transition-all duration-300 inline-block font-sans"
                   >
                     {link.label}
                   </Link>
@@ -191,11 +191,11 @@ export function Footer() {
 
       {/* Bottom bar */}
       <div
-        className="border-t border-slate-800"
+        className="border-t border-blue-200"
       >
-        <div className="container-site py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="container-site py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p
-            className="text-xs text-slate-400 font-sans"
+            className="text-xs text-slate-500 font-sans"
           >
             &copy; {new Date().getFullYear()} RHA Builder. All rights reserved.
           </p>
@@ -208,7 +208,7 @@ export function Footer() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-xs font-medium text-slate-400 hover:text-white transition-colors duration-200 font-sans"
+                  className="text-xs font-medium text-slate-500 hover:text-brand-primary transition-colors duration-200 font-sans"
                 >
                   {link.label}
                 </Link>

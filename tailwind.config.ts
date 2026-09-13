@@ -25,6 +25,7 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-display)", "Cormorant Garamond", "Georgia", "serif"],
         sans: ["var(--font-sans)", "Inter", "sans-serif"],
+        figtree: ["var(--font-figtree)", "sans-serif"],
       },
     },
   },

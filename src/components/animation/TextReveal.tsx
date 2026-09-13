@@ -52,13 +52,18 @@ export function TextReveal({
         viewport={{ once, amount: 0.3 }}
         className="flex flex-wrap max-w-full gap-x-[0.25em]"
       >
-        {words.map((word, idx) => (
-          <span key={idx} className="inline-block max-w-full overflow-hidden pb-1">
-            <motion.span variants={childVariants} className="inline-block max-w-full break-words">
-              {word}
-            </motion.span>
-          </span>
-        ))}
+        {words.map((word, idx) => {
+          if (word === "\n") {
+            return <div key={`br-${idx}`} className="w-full h-0 basis-full" />;
+          }
+          return (
+            <span key={idx} className="inline-block max-w-full overflow-hidden pb-1">
+              <motion.span variants={childVariants} className="inline-block max-w-full break-words">
+                {word}
+              </motion.span>
+            </span>
+          );
+        })}
       </motion.span>
     </Component>
   );

@@ -104,26 +104,28 @@ interface StatsBarProps {
 export function StatsBar({ stats = DEFAULT_STATS, className = "" }: StatsBarProps) {
   return (
     <section
-      className={`border-b border-t border-[var(--color-border)] bg-[var(--color-surface-secondary)]/50 py-10 ${className}`}
+      className={`pt-8 sm:pt-12 pb-12 sm:pb-16 relative z-30 ${className}`}
       aria-label="Company overview statistics"
     >
       <div className="container-site">
-        <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[var(--color-border)]">
-          {stats.map((stat) => (
-            <div key={stat.id} className="py-6 sm:py-2 px-6 text-center group">
-              <div className="flex items-center justify-center">
-                <AnimatedCounter
-                  target={stat.target}
-                  suffix={stat.suffix}
-                  prefix={stat.prefix}
-                  className="text-4xl lg:text-5xl tracking-tight text-[var(--color-brand-primary)] group-hover:text-[var(--color-brand-accent)] transition-colors duration-300"
-                />
+        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-100">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+            {stats.map((stat) => (
+              <div key={stat.id} className="py-6 sm:py-2 px-6 text-center group">
+                <div className="flex items-center justify-center">
+                  <AnimatedCounter
+                    target={stat.target}
+                    suffix={stat.suffix}
+                    prefix={stat.prefix}
+                    className="text-4xl lg:text-5xl tracking-tight text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors duration-300"
+                  />
+                </div>
+                <p className="text-xs font-bold uppercase tracking-widest mt-3 font-sans text-slate-500">
+                  {stat.label}
+                </p>
               </div>
-              <p className="text-xs font-semibold uppercase tracking-widest mt-2 font-sans text-[var(--color-text-muted)]">
-                {stat.label}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

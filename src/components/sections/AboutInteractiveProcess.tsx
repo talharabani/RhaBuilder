@@ -95,70 +95,55 @@ export function AboutInteractiveProcess() {
     PROCESS_STEPS.find((s) => s.id === activeStepId) || PROCESS_STEPS[0];
 
   return (
-    <div className="w-full">
+    <div className="w-full p-8 md:p-12 lg:p-[4.5rem]" style={{ backgroundColor: '#e6f0fa', borderRadius: '2.5rem' }}>
       {/* Step Navigation Tabs */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+      <div className="flex flex-wrap gap-2 sm:gap-3 mb-10 md:mb-14 border-b border-[#0052cc]/10 pb-4">
         {PROCESS_STEPS.map((step) => {
           const isActive = step.id === activeStepId;
           return (
             <button
               key={step.id}
               onClick={() => setActiveStepId(step.id)}
-              className={`p-4 text-left rounded-xl border transition-all duration-300 relative group overflow-hidden ${
+              className={`px-5 py-2.5 rounded-full transition-all duration-300 relative ${
                 isActive
-                  ? "bg-[var(--color-brand-primary)] text-white border-[var(--color-brand-primary)] shadow-lg scale-[1.02]"
-                  : "bg-white text-[var(--color-text-primary)] border-[var(--color-border)] hover:border-[var(--color-brand-accent)] hover:shadow-md"
+                  ? "bg-white text-[#0052cc] font-bold shadow-sm border border-[#0052cc]/10 scale-105"
+                  : "bg-transparent text-slate-500 font-medium hover:bg-white/50 hover:text-slate-800"
               }`}
             >
-              <div className="flex items-center justify-end mb-2">
-                <span
-                  className={`w-2.5 h-2.5 rounded-full ${
-                    isActive
-                      ? "bg-[var(--color-brand-accent)] animate-pulse"
-                      : "bg-slate-300"
-                  }`}
-                />
-              </div>
-              <h3
-                className={`font-display font-semibold text-sm line-clamp-1 ${
-                  isActive ? "text-white" : "text-[var(--color-text-primary)]"
-                }`}
-              >
-                {step.title}
-              </h3>
+              <span className="font-sans text-sm sm:text-base">{step.title}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Active Stage Card Detail */}
-      <div className="bg-white rounded-2xl border border-[var(--color-border)] overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-12">
+      {/* Active Stage Content */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         {/* Text & Content Column */}
-        <div className="lg:col-span-7 p-8 md:p-10 flex flex-col justify-between">
+        <div className="lg:col-span-6 flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-xs font-semibold text-[var(--color-brand-secondary)]">
+              <span className="text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase font-sans text-[#0052cc]">
                 Standardized Delivery Framework
               </span>
             </div>
 
-            <h3 className="font-display text-2xl md:text-3xl font-semibold text-[var(--color-text-primary)] mb-2">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#0b1b3d] leading-[1.15] tracking-tight font-sans mb-3">
               {activeStep.title}
             </h3>
-            <p className="text-sm font-medium text-[var(--color-brand-secondary)] mb-6">
+            <p className="text-sm md:text-base font-bold text-[#0052cc] mb-6 font-sans">
               {activeStep.subtitle}
             </p>
 
-            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-6">
+            <p className="text-slate-500 leading-relaxed font-sans text-sm md:text-base mb-8">
               {activeStep.description}
             </p>
 
             {/* Highlights List */}
-            <div className="space-y-3 mb-8">
+            <div className="space-y-4 mb-10">
               {activeStep.highlights.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 text-sm">
-                  <CheckCircleIcon className="w-5 h-5 text-[var(--color-brand-secondary)] shrink-0 mt-0.5" />
-                  <span className="text-[var(--color-text-secondary)] font-medium">
+                <div key={idx} className="flex items-start gap-4 text-sm md:text-base">
+                  <CheckCircleIcon className="w-6 h-6 text-[#0052cc] shrink-0" />
+                  <span className="text-slate-700 font-medium font-sans">
                     {item}
                   </span>
                 </div>
@@ -167,41 +152,34 @@ export function AboutInteractiveProcess() {
           </div>
 
           {/* Metric Highlight Footer */}
-          <div className="pt-6 border-t border-[var(--color-border)] flex items-center justify-between">
+          <div className="pt-8 border-t border-[#0052cc]/10 flex items-center justify-between">
             <div>
-              <p className="text-xs text-[var(--color-text-muted)] font-sans">
+              <p className="text-xs text-slate-500 font-sans tracking-wide uppercase font-semibold mb-1">
                 {activeStep.metricLabel}
               </p>
-              <p className="text-xl font-display font-bold text-[var(--color-brand-primary)]">
+              <p className="text-2xl md:text-3xl font-sans font-black text-[#0b1b3d]">
                 {activeStep.metricValue}
               </p>
             </div>
             <a
               href="/contact"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-brand-secondary)] hover:text-[var(--color-brand-primary)] transition-colors"
+              className="inline-flex items-center gap-2 text-[#0052cc] text-sm md:text-base font-bold font-sans hover:gap-3 transition-all"
             >
               Discuss Your Project
-              <ArrowRightIcon className="w-3.5 h-3.5" />
+              <ArrowRightIcon className="w-4 h-4" strokeWidth={2.5} />
             </a>
           </div>
         </div>
 
         {/* Image Column */}
-        <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-full bg-[var(--color-surface-dark)]">
+        <div className="lg:col-span-6 h-full min-h-[400px] lg:min-h-[550px] relative overflow-hidden" style={{ borderRadius: '1.5rem' }}>
           <Image
             src={activeStep.image}
             alt={activeStep.imageAlt}
             fill
             className="object-cover transition-opacity duration-500"
-            sizes="(max-width: 1024px) 100vw, 40vw"
+            sizes="(max-width: 1024px) 100vw, 50vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:bg-gradient-to-r lg:from-black/40 lg:to-transparent" />
-          <div className="absolute bottom-4 left-4 right-4 text-white text-xs font-sans bg-black/60 backdrop-blur-md p-3 rounded-lg border border-white/10">
-            <span className="font-semibold block text-[var(--color-brand-accent)]">
-              RHA Standards Benchmark
-            </span>
-            {activeStep.imageAlt}
-          </div>
         </div>
       </div>
     </div>

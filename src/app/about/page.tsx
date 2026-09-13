@@ -14,12 +14,17 @@ import {
   AcademicCapIcon,
   HandThumbUpIcon,
   DocumentCheckIcon,
+  ChevronRightIcon,
+  UserGroupIcon,
+  CalendarDaysIcon,
+  BanknotesIcon,
+  MapPinIcon,
+  HomeModernIcon,
 } from "@heroicons/react/24/outline";
+import { StarIcon } from "@heroicons/react/24/solid";
 import { CTABand } from "@/components/sections/CTABand";
-import { AboutStatsBanner } from "@/components/sections/AboutStatsBanner";
 import { AboutInteractiveProcess } from "@/components/sections/AboutInteractiveProcess";
 import { SITE_CONTACT } from "@/lib/constants";
-import { WhatsAppIcon } from "@/components/ui/Icons";
 
 export const metadata: Metadata = {
   title: "About RHA Builder | Commercial Plazas & Residential Development Excellence",
@@ -27,6 +32,33 @@ export const metadata: Metadata = {
     "Discover RHA Builder: established in 2006 by CEO Faryad Hussain. Premier commercial plazas, 25% advance shop sales with 3-year payment plans, and turnkey residential house construction in Lahore & Islamabad.",
   alternates: { canonical: "https://rhabuilder.com/about" },
 };
+
+const STATS = [
+  {
+    icon: CalendarDaysIcon,
+    value: "2006",
+    label: "Established Year",
+    description: "20+ years of real estate & construction excellence",
+  },
+  {
+    icon: ClockIcon,
+    value: "2 Years",
+    label: "Typical Completion",
+    description: "Standard timeframe for commercial plaza delivery",
+  },
+  {
+    icon: BanknotesIcon,
+    value: "3-Year",
+    label: "Flexible Payment Plan",
+    description: "25% advance with quarterly shop installment options",
+  },
+  {
+    icon: MapPinIcon,
+    value: "2 Cities",
+    label: "Primary Service Hubs",
+    description: "Serving Lahore & Islamabad market regions",
+  },
+];
 
 const VALUES = [
   {
@@ -42,7 +74,7 @@ const VALUES = [
       "Fixed 3-year quarterly payment plans, transparent shop contracts, and zero hidden costs for investors and home buyers.",
   },
   {
-    icon: SparklesIcon,
+    icon: HomeModernIcon,
     title: "Commercial & Residential Innovation",
     description:
       "Engineered multi-floor commercial shops with high-speed lifts, 24/7 power backup, and modern residential house finishes.",
@@ -105,73 +137,100 @@ const QUALITY_BENCHMARKS = [
   },
 ];
 
-const TESTIMONIALS = [
-  {
-    quote: "RHA Builders delivered our commercial shop in Ansa Tower on schedule. The 3-year quarterly payment plan made property investment seamless for our business.",
-    author: "Commercial Shop Owner",
-    location: "Shahalmi Market, Lahore",
-  },
-  {
-    quote: "The structural build quality of our 10 Marla house in Islamabad exceeded our expectations. CEO Faryad Hussain and his engineering team maintained total transparency throughout.",
-    author: "Resident Family",
-    location: "Pakistani Town, Islamabad",
-  },
-];
-
 export default function AboutPage() {
   return (
-    <div className="bg-[#fafaf8] text-[var(--color-text-primary)] font-sans min-h-screen">
-      {/* ─── 1. LUXURY HERO BANNER ────────────────────────────────────────── */}
-      <section
-        className="relative flex items-center min-h-[500px] md:min-h-[580px] overflow-hidden bg-slate-950"
-        aria-label="About RHA Builder hero"
-      >
-        <Image
-          src="/images/about/about-hero-architecture.jpg"
-          alt="RHA Builder Architectural Development Tower"
-          fill
-          priority
-          className="object-cover object-center opacity-45"
-          sizes="100vw"
-        />
+    <>
+      {/* ─── 1. HERO BANNER (White gradient style matching other pages) ── */}
+      <div className="px-3 sm:px-6 lg:px-8 py-4 lg:py-6 w-full max-w-[1600px] mx-auto">
+        <section
+          className="relative min-h-[45vh] flex items-center overflow-hidden rounded-3xl sm:rounded-[2rem] w-full bg-white border border-slate-200/90 shadow-[0_20px_50px_rgba(15,23,42,0.08)]"
+          aria-label="About RHA Builder hero"
+        >
+          <Image
+            src="/images/helicopter.png"
+            alt="RHA Builder Architectural Development"
+            fill
+            priority
+            className="object-cover object-[70%_center]"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, #ffffff 0%, #ffffff 25%, rgba(255,255,255,0.92) 45%, rgba(255,255,255,0) 70%)",
+            }}
+            aria-hidden="true"
+          />
+          <div className="w-full relative z-10 py-12 sm:py-16 lg:py-20 p-8 md:p-12 lg:p-[4.5rem]">
+            <div className="max-w-3xl">
+              <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
+                <ol className="flex items-center gap-2 text-sm sm:text-base font-sans text-slate-500 font-medium">
+                  <li>
+                    <Link href="/" className="hover:text-[#0052cc] transition-colors">
+                      Home
+                    </Link>
+                  </li>
+                  <li aria-hidden="true">/</li>
+                  <li aria-current="page" className="text-[#1a2b4a] font-bold">
+                    About
+                  </li>
+                </ol>
+              </nav>
 
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-transparent pointer-events-none"
-          aria-hidden="true"
-        />
+              <p className="text-xs font-bold tracking-widest uppercase mb-4 font-sans text-[#0052cc]">
+                Established 2006 Real Estate & Construction Leadership
+              </p>
 
-        <div className="container-site relative z-10 py-32 md:py-36">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider uppercase mb-4 px-4 py-1.5 rounded-full border bg-black/60 backdrop-blur-md text-[#c9a96e] border-[#c9a96e]/40 shadow-md">
-              <CheckBadgeIcon className="w-4 h-4 text-[#c9a96e]" />
-              Established 2006 Real Estate & Construction Leadership
-            </span>
+              <h1 className="font-figtree font-bold text-[#1a2b4a] text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight mb-5">
+                About RHA Builders
+              </h1>
 
-            <h1 className="font-sans font-extrabold text-white leading-tight mb-4 text-3xl sm:text-4xl md:text-5xl tracking-tight">
-              Constructing Commercial Plazas & Residential Excellence Since 2006
-            </h1>
+              <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed max-w-2xl">
+                Delivering commercial plazas, shop sales on 25% advance and 3-year installment plans, and custom residential houses across Lahore & Islamabad since 2006.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
 
-            <p className="text-base md:text-lg text-slate-300 font-sans leading-relaxed max-w-2xl">
-              RHA Builder delivers landmark commercial plazas, shop sales on 25% advance and 3-year installment plans, and custom residential houses across Lahore & Islamabad.
-            </p>
+      {/* ─── 2. STATS BAR (Matching homepage StatsBar design) ──────── */}
+      <section className="bg-white pb-16 md:pb-24 px-3 sm:px-6 lg:px-8">
+        <div className="w-full max-w-6xl mx-auto -mt-10 relative z-20">
+          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-slate-200">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+              {STATS.map((stat, idx) => {
+                const Icon = stat.icon;
+                return (
+                  <div key={idx} className="flex items-center gap-4">
+                    <div className="text-[#0052cc] flex items-center justify-center shrink-0">
+                      <Icon className="w-10 h-10 stroke-[1.5]" />
+                    </div>
+                    <div>
+                      <p className="font-sans font-extrabold text-2xl md:text-3xl text-slate-800 tracking-tight leading-none">
+                        {stat.value}
+                      </p>
+                      <p className="text-xs text-slate-600 font-sans font-medium mt-0.5">
+                        {stat.label}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ─── 2. STATS BANNER ──────────────────────────────────────────── */}
-      <section className="relative -mt-10 z-20 container-site mb-16">
-        <AboutStatsBanner />
-      </section>
-
-      {/* ─── 3. COMPANY STORY & EXECUTIVE NARRATIVE ───────────────────── */}
-      <section className="py-16 bg-[#fafaf8]" aria-labelledby="overview-heading">
-        <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      {/* ─── 3. COMPANY STORY (Left-aligned header matching homepage) ── */}
+      <section className="pt-16 pb-12 md:pt-24 md:pb-20 px-3 sm:px-6 lg:px-8 bg-white" aria-labelledby="overview-heading">
+        <div className="w-full max-w-[1600px] mx-auto px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Image Column */}
             <div className="lg:col-span-6 relative">
-              <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-xl border border-slate-200 bg-slate-950">
+              <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-xl bg-slate-950">
                 <Image
-                  src="/images/about/about-story-engineering.jpg"
+                  src="/images/faryad_group.png"
                   alt="RHA Builder executive engineering leadership"
                   fill
                   className="object-cover"
@@ -179,22 +238,22 @@ export default function AboutPage() {
                 />
               </div>
 
-              {/* Float Experience Badge */}
-              <div className="absolute -bottom-6 -right-4 md:right-6 bg-[#1a2b4a] text-white p-6 rounded-3xl border border-slate-800 shadow-2xl max-w-[260px] hidden sm:block">
+              {/* Float Badge */}
+              <div className="absolute -bottom-6 -right-4 md:right-6 bg-white text-slate-900 p-5 rounded-2xl border border-slate-200 shadow-xl max-w-[240px] hidden sm:block">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-[#c9a96e] text-slate-950 flex items-center justify-center font-bold">
-                    <BuildingOffice2Icon className="w-5 h-5" />
+                  <div className="text-[#0052cc] flex items-center justify-center font-bold">
+                    <BuildingOffice2Icon className="w-8 h-8 stroke-[1.5]" />
                   </div>
                   <div>
-                    <p className="text-xl font-sans font-extrabold text-white">
+                    <p className="text-xl font-sans font-extrabold text-slate-900">
                       Since 2006
                     </p>
-                    <p className="text-xs text-[#c9a96e] font-mono">
+                    <p className="text-xs text-[#0052cc] font-sans font-bold">
                       20 Years Legacy
                     </p>
                   </div>
                 </div>
-                <p className="text-xs text-slate-300 font-sans border-t border-slate-700/60 pt-2 leading-relaxed">
+                <p className="text-xs text-slate-500 font-sans border-t border-slate-100 pt-2 leading-relaxed">
                   Founded by CEO Faryad Hussain in Shahalmi, Lahore.
                 </p>
               </div>
@@ -203,79 +262,72 @@ export default function AboutPage() {
             {/* Right Content Column */}
             <div className="lg:col-span-6 space-y-6">
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#1a2b4a] font-sans block mb-2">
+                <h2 className="text-xs font-bold tracking-widest uppercase text-[#0052cc] mb-3 font-sans">
                   Company History & Vision
-                </span>
-                <h2 id="overview-heading" className="font-sans font-extrabold text-3xl md:text-4xl text-[#1a2b4a] tracking-tight">
-                  Established Real Estate & Construction Leadership
                 </h2>
+                <h3 id="overview-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1] font-sans">
+                  Established Real Estate & Construction Leadership
+                </h3>
               </div>
 
-              <div className="space-y-4 text-base text-[var(--color-text-muted)] font-sans leading-relaxed">
+              <div className="space-y-4 text-sm text-slate-500 font-sans leading-relaxed">
                 <p>
-                  Established in <strong className="text-[#1a2b4a]">2006</strong> by CEO <strong className="text-[#1a2b4a]">Faryad Hussain</strong>, <strong className="text-[#1a2b4a]">RHA Builders</strong> is a trusted real estate development and construction firm headquartered in Shahalmi Furniture Market, Lahore.
+                  Established in <strong className="text-slate-900">2006</strong> by CEO <strong className="text-slate-900">Faryad Hussain</strong>, <strong className="text-slate-900">RHA Builders</strong> is a trusted real estate development and construction firm headquartered in Shahalmi Furniture Market, Lahore.
                 </p>
                 <p>
-                  Our primary focus is the construction of multi-story commercial plazas and commercial shop sales. We offer flexible <strong className="text-[#1a2b4a]">25% advance booking</strong> and structured <strong className="text-[#1a2b4a]">3-year quarterly payment plans</strong>, making commercial property ownership accessible and secure.
+                  Our primary focus is the construction of multi-story commercial plazas and commercial shop sales. We offer flexible <strong className="text-slate-900">25% advance booking</strong> and structured <strong className="text-slate-900">3-year quarterly payment plans</strong>, making commercial property ownership accessible and secure.
                 </p>
                 <p>
                   Additionally, RHA Builders provides turnkey residential construction services, building custom family houses on plot sites and offering move-in ready residences across major housing societies in Lahore and Islamabad.
                 </p>
               </div>
 
-              {/* Core Feature Bullet Checkmarks */}
+              {/* Core Feature Checkmarks */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div className="flex items-center gap-2.5 text-xs font-bold text-[#1a2b4a] bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                  <CheckCircleIcon className="w-5 h-5 text-blue-600 shrink-0" />
-                  Commercial Plaza Construction
-                </div>
-                <div className="flex items-center gap-2.5 text-xs font-bold text-[#1a2b4a] bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                  <CheckCircleIcon className="w-5 h-5 text-blue-600 shrink-0" />
-                  25% Booking & 3-Year Payment Plans
-                </div>
-                <div className="flex items-center gap-2.5 text-xs font-bold text-[#1a2b4a] bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                  <CheckCircleIcon className="w-5 h-5 text-blue-600 shrink-0" />
-                  Residential Houses & Custom Builds
-                </div>
-                <div className="flex items-center gap-2.5 text-xs font-bold text-[#1a2b4a] bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                  <CheckCircleIcon className="w-5 h-5 text-blue-600 shrink-0" />
-                  Lahore & Islamabad Operations
-                </div>
+                {[
+                  "Commercial Plaza Construction",
+                  "25% Booking & 3-Year Payment Plans",
+                  "Residential Houses & Custom Builds",
+                  "Lahore & Islamabad Operations",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2.5 text-sm font-bold text-[#0052cc] bg-transparent py-2">
+                    <CheckCircleIcon className="w-5 h-5 text-[#0052cc] shrink-0" />
+                    {item}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── 5. QUALITY BENCHMARKS GRID (EXPANDED CONTENT) ─────────────── */}
-      <section className="py-16 bg-[#fafaf8] border-b border-slate-200" aria-labelledby="benchmarks-heading">
-        <div className="container-site">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#1a2b4a] font-sans block mb-1">
+      {/* ─── 4. QUALITY BENCHMARKS ─────────────────────────────────── */}
+      <section className="pt-16 pb-12 md:pt-24 md:pb-20 px-3 sm:px-6 lg:px-8 bg-white" aria-labelledby="benchmarks-heading">
+        <div className="w-full max-w-[1600px] mx-auto px-8">
+          <div className="mb-14 max-w-4xl">
+            <h2 className="text-xs font-bold tracking-widest uppercase text-[#0052cc] mb-3 font-sans">
               Engineering Standards
-            </span>
-            <h2 id="benchmarks-heading" className="font-sans font-extrabold text-3xl text-[#1a2b4a]">
-              The RHA Quality & Construction Benchmark
             </h2>
-            <p className="text-sm text-slate-600 font-sans mt-2">
-              How we ensure structural integrity, investor security, and superior property value across all commercial and residential developments.
-            </p>
+            <h3 id="benchmarks-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1] font-sans">
+              The RHA Quality &<br className="hidden sm:block" /> Construction Benchmark.
+            </h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {QUALITY_BENCHMARKS.map((b) => (
               <div
                 key={b.number}
-                className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                className="rha-card p-3 bg-white border border-slate-200 hover:border-[#0052cc] shadow-[0_4px_20px_rgb(0,0,0,0.03)] transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.15)] group flex flex-col"
+                style={{ borderRadius: '1.75rem' }}
               >
-                <div>
-                  <span className="text-3xl font-mono font-extrabold text-[#1a2b4a] opacity-40 block mb-3 group-hover:text-blue-600 group-hover:opacity-100 transition-all">
+                <div className="p-5 flex flex-col flex-1 relative z-10">
+                  <span className="text-4xl font-sans font-extrabold text-[#0052cc] opacity-30 block mb-4 group-hover:opacity-100 transition-all">
                     {b.number}
                   </span>
-                  <h3 className="font-sans font-extrabold text-lg text-slate-900 mb-2 leading-snug">
+                  <h3 className="font-sans font-extrabold text-base text-slate-900 group-hover:text-white transition-colors duration-300 leading-snug mb-2 tracking-tight">
                     {b.title}
                   </h3>
-                  <p className="text-xs text-slate-600 font-sans leading-relaxed">
+                  <p className="text-xs text-slate-500 group-hover:text-white transition-colors duration-300 font-sans leading-relaxed">
                     {b.description}
                   </p>
                 </div>
@@ -285,65 +337,123 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 6. COMPANY MILESTONES TIMELINE ───────────────────────────── */}
-      <section className="py-16 bg-white border-b border-slate-200" aria-labelledby="milestones-heading">
-        <div className="container-site">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#1a2b4a] font-sans block mb-1">
+      {/* ─── 5. MILESTONES TIMELINE ─────────────────────────────────── */}
+      <section className="pt-16 pb-12 md:pt-24 md:pb-20 px-3 sm:px-6 lg:px-8 bg-white" aria-labelledby="milestones-heading">
+        <div className="w-full max-w-[1600px] mx-auto px-8">
+          <div className="mb-14 max-w-4xl">
+            <h2 className="text-xs font-bold tracking-widest uppercase text-[#0052cc] mb-3 font-sans">
               Our Journey
-            </span>
-            <h2 id="milestones-heading" className="font-sans font-extrabold text-3xl text-[#1a2b4a]">
-              RHA Builders Milestone History
             </h2>
+            <h3 id="milestones-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1] font-sans">
+              RHA Builders Milestone History.
+            </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {MILESTONES.map((m) => (
-              <div
-                key={m.year}
-                className="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm relative group hover:border-[#1a2b4a] hover:bg-white transition-all"
-              >
-                <span className="text-2xl font-sans font-extrabold text-[#1a2b4a] font-mono block mb-2">
-                  {m.year}
-                </span>
-                <h3 className="font-sans font-bold text-lg text-[#1a2b4a] mb-2">
-                  {m.title}
-                </h3>
-                <p className="text-xs text-slate-600 font-sans leading-relaxed">
-                  {m.description}
-                </p>
-              </div>
-            ))}
+          {/* Desktop: Horizontal Arrow Timeline */}
+          <div className="hidden md:block">
+            <div className="flex items-start justify-between relative">
+              {MILESTONES.map((m, idx) => (
+                <div key={m.year} className="flex items-start" style={{ flex: 1 }}>
+                  {/* Milestone Content */}
+                  <div className="flex flex-col items-center text-center group relative" style={{ flex: 1 }}>
+                    {/* Year Circle */}
+                    <div className="w-20 h-20 rounded-full bg-[#0052cc] flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:shadow-[0_0_0_6px_rgba(0,82,204,0.15)] transition-all duration-300 relative z-10">
+                      <span className="text-lg font-sans font-extrabold text-white">{m.year}</span>
+                    </div>
+
+                    {/* Title Pill */}
+                    <div className="bg-transparent border border-[#0052cc]/20 rounded-full px-4 py-1.5 mb-3 group-hover:border-[#0052cc]/40 transition-all duration-300">
+                      <h3 className="font-sans font-bold text-xs text-[#0052cc] whitespace-nowrap">
+                        {m.title}
+                      </h3>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-xs text-slate-500 font-sans leading-relaxed max-w-[200px] mx-auto">
+                      {m.description}
+                    </p>
+                  </div>
+
+                  {/* Arrow Connector (between items) */}
+                  {idx < MILESTONES.length - 1 && (
+                    <div className="flex items-center justify-center shrink-0 mt-8" style={{ width: '50px' }}>
+                      <svg width="50" height="20" viewBox="0 0 50 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0" y1="10" x2="36" y2="10" stroke="#0052cc" strokeWidth="2" strokeDasharray="4 3" />
+                        <polygon points="36,4 48,10 36,16" fill="#0052cc" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile: Vertical Arrow Timeline */}
+          <div className="md:hidden relative">
+            {/* Vertical dashed line */}
+            <div className="absolute left-[23px] top-10 bottom-10 w-[2px] border-l-2 border-dashed border-[#0052cc]/30" aria-hidden="true" />
+
+            <div className="space-y-10">
+              {MILESTONES.map((m, idx) => (
+                <div key={m.year} className="relative">
+                  <div className="flex items-start gap-5">
+                    {/* Year Circle */}
+                    <div className="w-12 h-12 rounded-full bg-[#0052cc] flex items-center justify-center shadow-md shrink-0 relative z-10">
+                      <span className="text-xs font-sans font-extrabold text-white">{m.year}</span>
+                    </div>
+
+                    {/* Content */}
+                    <div className="pt-1">
+                      <h3 className="font-sans font-bold text-base text-[#0052cc] mb-1 leading-snug">
+                        {m.title}
+                      </h3>
+                      <p className="text-sm text-slate-500 font-sans leading-relaxed">
+                        {m.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Down Arrow (between items) */}
+                  {idx < MILESTONES.length - 1 && (
+                    <div className="flex justify-center ml-[17px] mt-3">
+                      <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="7,20 0,10 14,10" fill="#0052cc" opacity="0.4" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ─── 7. INTERACTIVE PROCESS FRAMEWORK ─────────────────────────── */}
-      <section className="py-16 bg-[#fafaf8] border-b border-slate-200" aria-labelledby="process-heading">
-        <div className="container-site">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#1a2b4a] font-sans block mb-1">
+      {/* ─── 6. INTERACTIVE PROCESS FRAMEWORK ──────────────────────── */}
+      <section className="pt-16 pb-12 md:pt-24 md:pb-20 px-3 sm:px-6 lg:px-8 bg-white" aria-labelledby="process-heading">
+        <div className="w-full max-w-[1600px] mx-auto px-8">
+          <div className="mb-14 max-w-4xl">
+            <h2 className="text-xs font-bold tracking-widest uppercase text-[#0052cc] mb-3 font-sans">
               Development Lifecycle
-            </span>
-            <h2 id="process-heading" className="font-sans font-extrabold text-3xl text-[#1a2b4a]">
-              The RHA 4-Stage Construction Methodology
             </h2>
+            <h3 id="process-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1] font-sans">
+              The RHA 4-Stage<br className="hidden sm:block" /> Construction Methodology.
+            </h3>
           </div>
 
           <AboutInteractiveProcess />
         </div>
       </section>
 
-      {/* ─── 8. CORE VALUES GRID ──────────────────────────────────────── */}
-      <section className="py-16 bg-white border-b border-slate-200" aria-labelledby="values-heading">
-        <div className="container-site">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#1a2b4a] font-sans block mb-1">
+      {/* ─── 7. CORE VALUES GRID ──────────────────────────────────── */}
+      <section className="pt-16 pb-12 md:pt-24 md:pb-20 px-3 sm:px-6 lg:px-8 bg-white" aria-labelledby="values-heading">
+        <div className="w-full max-w-[1600px] mx-auto px-8">
+          <div className="mb-14 max-w-4xl">
+            <h2 className="text-xs font-bold tracking-widest uppercase text-[#0052cc] mb-3 font-sans">
               Our Core Principles
-            </span>
-            <h2 id="values-heading" className="font-sans font-extrabold text-3xl text-[#1a2b4a]">
-              Core Values Driving Every Build
             </h2>
+            <h3 id="values-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1] font-sans">
+              Core Values Driving<br className="hidden sm:block" /> Every Build.
+            </h3>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -352,16 +462,17 @@ export default function AboutPage() {
               return (
                 <div
                   key={value.title}
-                  className="p-8 rounded-3xl border border-slate-200 bg-slate-50/70 shadow-sm hover:shadow-xl hover:bg-white transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
+                  className="rha-card p-3 bg-white border border-slate-200 hover:bg-[#0052cc] hover:border-[#0052cc] shadow-[0_4px_20px_rgb(0,0,0,0.03)] transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.15)] group flex flex-col"
+                  style={{ borderRadius: '1.75rem' }}
                 >
-                  <div>
-                    <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#1a2b4a] flex items-center justify-center mb-6 group-hover:bg-[#1a2b4a] group-hover:text-white transition-colors">
-                      <Icon className="w-6 h-6" />
+                  <div className="p-5 flex flex-col flex-1 relative z-10">
+                    <div className="text-[#0052cc] flex items-center mb-5 group-hover:text-white transition-colors">
+                      <Icon className="w-8 h-8 stroke-[1.5]" />
                     </div>
-                    <h3 className="font-sans font-bold text-xl text-[#1a2b4a] mb-3">
+                    <h3 className="font-sans font-extrabold text-base text-slate-900 group-hover:text-white transition-colors duration-300 mb-2 leading-snug tracking-tight">
                       {value.title}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                    <p className="text-xs text-slate-500 group-hover:text-white transition-colors duration-300 leading-relaxed font-sans">
                       {value.description}
                     </p>
                   </div>
@@ -372,44 +483,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 9. TRUST PROOF & CLIENT HIGHLIGHTS ───────────────────────── */}
-      <section className="py-16 bg-[#fafaf8]" aria-labelledby="trust-heading">
-        <div className="container-site">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#1a2b4a] font-sans block mb-1">
-              Client & Investor Trust
-            </span>
-            <h2 id="trust-heading" className="font-sans font-extrabold text-3xl text-[#1a2b4a]">
-              Delivering Value for Business Owners & Families
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {TESTIMONIALS.map((t, i) => (
-              <div
-                key={i}
-                className="bg-white p-8 rounded-3xl border border-slate-200 shadow-md relative flex flex-col justify-between"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center gap-1 text-amber-400">
-                    <HandThumbUpIcon className="w-5 h-5 text-blue-600" />
-                    <span className="text-xs font-bold font-mono text-[#1a2b4a] uppercase">Verified Client Feedback</span>
-                  </div>
-                  <p className="text-sm sm:text-base text-slate-700 font-sans leading-relaxed italic">
-                    &quot;{t.quote}&quot;
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-                  <span className="font-bold text-slate-900 font-sans">{t.author}</span>
-                  <span className="text-[#1a2b4a] font-semibold font-mono">{t.location}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 10. CTA BAND ─────────────────────────────────────────────── */}
+      {/* ─── 9. CTA BAND ─────────────────────────────────────────── */}
       <CTABand
         title="Ready to Discuss Your Real Estate Project?"
         description="Connect with RHA Builder's CEO Faryad Hussain and executive team to discuss shop bookings, payment plans, or residential house builds."
@@ -418,6 +492,6 @@ export default function AboutPage() {
         secondaryLabel="Meet the Team"
         secondaryHref="/team"
       />
-    </div>
+    </>
   );
 }

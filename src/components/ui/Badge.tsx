@@ -9,10 +9,10 @@ export function StatusBadge({ status, className }: BadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold font-sans tracking-wider uppercase rounded-full shadow-md backdrop-blur-md transition-all border",
-        status === "ongoing" && "bg-slate-950/90 text-amber-300 border-amber-500/50 shadow-black/40",
-        status === "completed" && "bg-slate-950/90 text-emerald-300 border-emerald-500/50 shadow-black/40",
-        status === "planned" && "bg-slate-950/90 text-blue-300 border-blue-500/50 shadow-black/40",
+        "inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold font-sans tracking-wider uppercase rounded-full shadow-sm backdrop-blur-md transition-all border",
+        status === "ongoing" && "bg-white/90 text-amber-600 border-amber-200",
+        status === "completed" && "bg-white/90 text-emerald-600 border-emerald-200",
+        status === "planned" && "bg-white/90 text-blue-600 border-blue-200",
         className
       )}
     >
@@ -44,7 +44,7 @@ export function TypeBadge({ type, className }: TypeBadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center px-2.5 py-1 text-[11px] font-bold font-sans tracking-wider uppercase rounded-full bg-slate-950/90 text-white border border-white/30 shadow-md backdrop-blur-md shadow-black/40",
+        "inline-flex items-center px-2.5 py-1 text-[11px] font-bold font-sans tracking-wider uppercase rounded-full bg-white/90 text-[#1a2b4a] border border-slate-200 shadow-sm backdrop-blur-md",
         className
       )}
     >

@@ -24,78 +24,60 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section
-        className="relative flex items-end overflow-hidden"
-        style={{ minHeight: "420px", backgroundColor: "var(--color-surface-dark)" }}
-        aria-label="Contact page hero"
-      >
-        <Image
-          src="/images/contact-hero-bg.jpg"
-          alt="Contact RHA Builder Development & Construction Team"
-          fill
-          priority
-          className="object-cover object-right lg:object-center"
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.6) 55%, rgba(15, 23, 42, 0.25) 100%)",
-          }}
-          aria-hidden="true"
-        />
-        <div className="container-site relative z-10 pb-14 pt-36">
-          <nav aria-label="Breadcrumb" className="mb-4">
-            <ol className="flex items-center gap-2 text-xs font-sans text-white/80">
-              <li>
-                <a href="/" className="hover:text-white transition-colors">
-                  Home
-                </a>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li aria-current="page" style={{ color: "var(--color-brand-accent)" }}>
-                Contact
-              </li>
-            </ol>
-          </nav>
-          <h1
-            className="font-display font-semibold text-white max-w-2xl drop-shadow-md"
-            style={{ fontSize: "clamp(2.25rem, 4vw, 3.25rem)" }}
-          >
-            Contact <span className="text-sm text-slate-300 font-normal font-sans ml-2">Get in Touch with Us</span>
-          </h1>
-        </div>
-      </section>
+      <div className="px-3 sm:px-6 lg:px-8 py-4 lg:py-6 w-full max-w-[1600px] mx-auto">
+        <section
+          className="relative min-h-[45vh] flex items-center overflow-hidden rounded-3xl sm:rounded-[2rem] w-full bg-white border border-slate-200/90 shadow-[0_20px_50px_rgba(15,23,42,0.08)]"
+          aria-label="Contact page hero"
+        >
+          <Image
+            src="/images/contact-hero-bg.jpg"
+            alt="Contact RHA Builder Development & Construction Team"
+            fill
+            priority
+            className="object-cover object-[70%_center]"
+          />
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to right, #ffffff 0%, #ffffff 25%, rgba(255,255,255,0.92) 45%, rgba(255,255,255,0) 70%)",
+            }}
+            aria-hidden="true"
+          />
+          <div className="w-full relative z-10 py-12 sm:py-16 lg:py-20 p-8 md:p-12 lg:p-[4.5rem]">
+            <div className="max-w-3xl">
+              <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
+                <ol className="flex items-center gap-2 text-sm sm:text-base font-sans text-slate-500 font-medium">
+                  <li>
+                    <a href="/" className="hover:text-[#0052cc] transition-colors">
+                      Home
+                    </a>
+                  </li>
+                  <li aria-hidden="true">/</li>
+                  <li aria-current="page" className="text-[#1a2b4a] font-bold">
+                    Contact
+                  </li>
+                </ol>
+              </nav>
+              <h1 className="font-figtree font-bold text-[#1a2b4a] text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight mb-5">
+                Contact Us
+              </h1>
+              <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed max-w-2xl">
+                Get in touch with RHA Builder corporate office and project consultation team.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
 
-      {/* Main 2-Column Section with Dynamic Architectural Background */}
-      <section className="py-12 md:py-20 bg-slate-50 relative overflow-hidden" aria-labelledby="contact-heading">
-        {/* ─── DYNAMIC ARCHITECTURAL BACKGROUND LAYERS ───────────────────────── */}
-        <div className="absolute inset-0 bg-blueprint-grid opacity-60 pointer-events-none" aria-hidden="true" />
-        
-        {/* Animated Radial Light Glow Orbs */}
-        <div
-          className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-blue-500/10 blur-3xl pointer-events-none animate-pulse-orb"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute top-1/2 -right-24 w-[480px] h-[480px] rounded-full bg-[#1a2b4a]/10 blur-3xl pointer-events-none animate-pulse-orb"
-          style={{ animationDelay: "3s" }}
-          aria-hidden="true"
-        />
-        <div
-          className="absolute -bottom-32 left-1/3 w-80 h-80 rounded-full bg-amber-400/15 blur-3xl pointer-events-none animate-float-beam"
-          aria-hidden="true"
-        />
-
-        {/* Decorative Geometric Blueprint Lines */}
-        <div className="absolute top-12 right-12 w-64 h-64 border border-slate-300/40 rounded-full pointer-events-none hidden lg:block" aria-hidden="true" />
-        <div className="absolute top-20 right-20 w-48 h-48 border border-dashed border-slate-300/40 rounded-full pointer-events-none hidden lg:block" aria-hidden="true" />
+      {/* Main 2-Column Section */}
+      <section className="py-12 md:py-20 bg-[#e6f0fa] relative overflow-hidden" aria-labelledby="contact-heading">
 
         <div className="container-site relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* ─── LEFT COLUMN: CONTACT INFO + EMBEDDED GOOGLE MAP ─── */}
-            <div className="lg:col-span-5 space-y-8 bg-white/80 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-lg">
+            <div className="lg:col-span-5 space-y-8 bg-white/80 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-slate-200/80">
               <div>
                 <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#1a2b4a] block mb-1">
                   Head Office Communications
@@ -246,7 +228,7 @@ export default function ContactPage() {
             </div>
 
             {/* ─── RIGHT COLUMN: SEND US A MESSAGE / LEAD FORM ─── */}
-            <div className="lg:col-span-7 bg-white/90 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-xl">
+            <div className="lg:col-span-7 bg-white/90 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-slate-200/90">
               <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#1a2b4a] block mb-1">
                 Direct Client Support
               </span>

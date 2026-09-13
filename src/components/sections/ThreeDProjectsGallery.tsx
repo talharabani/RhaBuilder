@@ -13,6 +13,9 @@ import {
   CheckCircleIcon,
   ClockIcon,
   SparklesIcon,
+  HeartIcon,
+  HomeIcon,
+  Square2StackIcon,
 } from "@heroicons/react/24/outline";
 import { projects, filterProjects, type Project } from "@/lib/data/projects";
 import { ProjectQuickDetailModal } from "@/components/ui/ProjectQuickDetailModal";
@@ -79,7 +82,7 @@ export function ThreeDProjectsGallery() {
   const activeProject = displayProjects[activeIndex] || displayProjects[0] || projects[0];
 
   return (
-    <section className="section-pad bg-white text-[var(--color-text-primary)] relative overflow-hidden py-12 md:py-20 border-y border-[var(--color-border)]">
+    <section className="bg-white text-[var(--color-text-primary)] relative overflow-hidden pt-4 pb-12 md:pt-6 md:pb-20">
       {/* Ambient Background Glow */}
       <div
         className="absolute inset-0 opacity-40 pointer-events-none"
@@ -90,62 +93,51 @@ export function ThreeDProjectsGallery() {
         aria-hidden="true"
       />
 
-      <div className="container-site relative z-10">
-        {/* ─── PROJECT FILTER BAR ────────────────── */}
-        <div className="border-y py-4 mb-10 bg-white" style={{ borderColor: "var(--color-border)" }}>
-          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-            {/* Filter Pills Groups */}
-            <div className="flex flex-wrap items-center gap-3 max-w-full overflow-x-auto no-scrollbar">
-              {/* Type Filter Pills */}
-              <div className="flex flex-wrap gap-2">
-                {TYPE_FILTERS.map((f) => {
-                  const isActive = selectedType === f.value;
-                  return (
-                    <button
-                      key={f.value}
-                      type="button"
-                      onClick={() => setSelectedType(f.value)}
-                      className={`px-3.5 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-md border transition-all duration-150 cursor-pointer ${
-                        isActive
-                          ? "bg-[#1a2b4a] text-white border-[#1a2b4a] shadow-sm font-semibold"
-                          : "bg-white text-[var(--color-text-secondary)] border-slate-200 hover:border-slate-400 hover:text-[#1a2b4a]"
-                      }`}
-                    >
-                      {f.label}
-                    </button>
-                  );
-                })}
-              </div>
-
-              <div className="hidden sm:block w-px h-6 bg-slate-200" />
-
-              {/* Status Filter Pills */}
-              <div className="flex flex-wrap gap-2">
-                {STATUS_FILTERS.map((f) => {
-                  const isActive = selectedStatus === f.value;
-                  return (
-                    <button
-                      key={f.value}
-                      type="button"
-                      onClick={() => setSelectedStatus(f.value)}
-                      className={`px-3.5 py-1.5 text-xs sm:text-sm font-sans font-medium rounded-md border transition-all duration-150 cursor-pointer ${
-                        isActive
-                          ? "bg-[#1a2b4a] text-white border-[#1a2b4a] shadow-sm font-semibold"
-                          : "bg-white text-[var(--color-text-secondary)] border-slate-200 hover:border-slate-400 hover:text-[#1a2b4a]"
-                      }`}
-                    >
-                      {f.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Result Count */}
-            <p className="text-xs sm:text-sm font-sans text-slate-500 font-medium shrink-0">
-              {totalProjects === 1 ? "1 project" : `${totalProjects} projects`}
-            </p>
+      <div className="w-full max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+        <div className="w-full px-8">
+        {/* ─── SECTION HEADER ───────────────────── */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-24 pt-4">
+          <div className="max-w-2xl">
+            <h2 className="text-xs font-bold tracking-widest uppercase text-[#0052cc] mb-3 font-sans">
+              Our Projects
+            </h2>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1a2b4a] tracking-tight leading-[1.1] font-sans">
+              Places that <br className="hidden sm:block" /> move life forward.
+            </h3>
           </div>
+          <div className="shrink-0 max-w-full overflow-x-auto no-scrollbar">
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-end">
+              <div className="flex flex-wrap items-center gap-3">
+                {/* Type Filter Pills */}
+                <div className="flex flex-wrap gap-2">
+                  {TYPE_FILTERS.map((f) => {
+                    const isActive = selectedType === f.value;
+                    return (
+                      <button
+                        key={f.value}
+                        type="button"
+                        onClick={() => setSelectedType(f.value)}
+                        className={`px-5 py-2 text-xs sm:text-sm font-sans font-bold rounded-xl border-2 transition-all duration-150 cursor-pointer active:translate-y-[2px] active:border-b-2 ${
+                          isActive
+                            ? "bg-[#0052cc] text-white border-[#00398f] shadow-[inset_0_3px_6px_rgba(0,0,0,0.3)] translate-y-[2px] border-b-2"
+                            : "bg-white text-slate-600 border-slate-200 border-b-4 hover:bg-slate-50 hover:text-[#0052cc]"
+                        }`}
+                      >
+                        {f.label}
+                      </button>
+                    );
+                  })}
+                </div>
+
+              </div>
+
+              {/* Result Count */}
+              <p className="text-xs sm:text-sm font-sans text-slate-500 font-medium shrink-0">
+                {totalProjects === 1 ? "1 project" : `${totalProjects} projects`}
+              </p>
+            </div>
+          </div>
+        </div>
         </div>
 
         {/* ─── 3D PERSPECTIVE GALLERY VIEWPORT ─────────────────────────────────── */}
@@ -202,15 +194,17 @@ export function ThreeDProjectsGallery() {
                     style={{
                       zIndex,
                       transformStyle: "preserve-3d",
+                      willChange: "transform, opacity",
                     }}
                     className={`absolute w-[88vw] max-w-[340px] sm:w-[340px] md:w-[380px] h-[360px] sm:h-[400px] md:h-[440px] rounded-3xl overflow-hidden cursor-pointer border transition-all duration-300 ${
                       isActive
-                        ? "border-[var(--color-brand-accent)] shadow-[0_20px_50px_rgba(26,43,74,0.3)] ring-2 ring-[var(--color-brand-accent)]/60 bg-slate-950"
-                        : "border-slate-300 hover:border-[var(--color-brand-accent)] bg-slate-900 shadow-xl opacity-80"
+                        ? "border-transparent shadow-[0_20px_40px_-15px_rgba(26,43,74,0.5)] bg-slate-950"
+                        : "border-transparent bg-slate-900 shadow-xl opacity-80"
                     }`}
                   >
                     {/* Card Background Image */}
-                    <div className="absolute inset-0 overflow-hidden bg-slate-950">
+                    <div className="absolute inset-0 overflow-hidden bg-slate-950" style={{ transformStyle: 'flat' }}>
+                      {/* Sharp image */}
                       <img
                         src={project.coverImage || project.heroImage}
                         alt={project.name}
@@ -218,63 +212,93 @@ export function ThreeDProjectsGallery() {
                           isActive ? "scale-105" : "scale-100 opacity-70"
                         }`}
                       />
-                      <div
-                        className={`absolute inset-0 transition-opacity ${
-                          isActive
-                            ? "bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent opacity-90"
-                            : "bg-slate-950/70"
-                        }`}
-                      />
+                      
+                      {/* Dark overlay for inactive cards */}
+                      {!isActive && (
+                        <div className="absolute inset-0 bg-[#050505]/40 transition-opacity" />
+                      )}
+
+                      {/* Blurred duplicate image — smoothly fades in from middle to bottom */}
+                      {isActive && (
+                        <div
+                          style={{
+                            position: 'absolute',
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            height: '65%',
+                            overflow: 'hidden',
+                            transformStyle: 'flat',
+                            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 50%)',
+                            maskImage: 'linear-gradient(to bottom, transparent 0%, black 50%)',
+                          }}
+                        >
+                          <img
+                            src={project.coverImage || project.heroImage}
+                            alt=""
+                            aria-hidden="true"
+                            style={{
+                              position: 'absolute',
+                              bottom: 0,
+                              left: 0,
+                              width: '100%',
+                              height: '440px',
+                              objectFit: 'cover',
+                              transform: 'scale(1.05)',
+                              filter: 'blur(18px)',
+                            }}
+                          />
+                          {/* Dark blue tint over blurred area */}
+                          <div
+                            style={{
+                              position: 'absolute',
+                              inset: 0,
+                              background: 'rgba(10, 25, 50, 0.50)',
+                            }}
+                          />
+                        </div>
+                      )}
                     </div>
 
                     {/* Top Badge Overlay */}
                     <div className="relative z-10 p-4 sm:p-5 flex justify-between items-start">
-                      <span className="text-[11px] font-mono font-bold uppercase tracking-widest bg-slate-950/90 backdrop-blur-md text-[#c9a96e] px-3 py-1 rounded-full border border-[#c9a96e]/40 shadow-md">
-                        {project.city}
+                      <span className="text-[10px] sm:text-[11px] font-sans font-bold uppercase tracking-widest px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-lg bg-slate-950/80 text-white backdrop-blur-sm">
+                        {project.status === "ongoing" ? "Ongoing" : "Completed"}
                       </span>
 
-                      {project.status === "ongoing" ? (
-                        <span className="text-[11px] font-sans font-bold uppercase tracking-wider bg-slate-950/90 backdrop-blur-md text-amber-300 border border-amber-500/50 px-3 py-1 rounded-full shadow-md flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                          Ongoing
-                        </span>
-                      ) : (
-                        <span className="text-[11px] font-sans font-bold uppercase tracking-wider bg-slate-950/90 backdrop-blur-md text-emerald-300 border border-emerald-500/50 px-3 py-1 rounded-full shadow-md flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                          Completed
-                        </span>
-                      )}
+                      <button className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-colors shadow-lg backdrop-blur-md bg-white/20 hover:bg-white/40">
+                        <HeartIcon className="w-5 h-5 text-white" />
+                      </button>
                     </div>
 
-                    {/* Card Footer Details - Clean & Minimalist */}
-                    <div className="absolute bottom-0 inset-x-0 z-10 p-5 sm:p-6 space-y-2">
-                      <div className="flex items-center gap-1.5 text-xs text-[#f59e0b] font-sans font-bold uppercase tracking-wider drop-shadow-sm">
-                        <MapPinIcon className="w-4 h-4 text-[#f59e0b] shrink-0" />
-                        <span className="truncate">{project.locationName}</span>
-                      </div>
-
-                      {/* Clean Single Line Title */}
-                      <h3 className="font-sans font-extrabold text-lg sm:text-xl text-white tracking-tight leading-snug drop-shadow-md line-clamp-1">
-                        {project.name.replace("Completed Residential Houses — ", "")}
+                    {/* Card Footer Details */}
+                    <div className="absolute bottom-0 inset-x-0 z-10 p-5 sm:p-6 space-y-1">
+                      <h3 className="font-sans font-extrabold text-2xl sm:text-3xl tracking-tight leading-none drop-shadow-md line-clamp-1 text-white">
+                        {project.name.replace("Completed Residential Houses — ", "").replace("Completed Projects — ", "")}
                       </h3>
 
-                      {/* Single Spec Pill */}
-                      <div className="flex items-center gap-2 pt-0.5">
-                        <span className="text-[11px] font-sans font-semibold text-slate-200 bg-slate-950/80 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15">
-                          {project.type[0] === "commercial"
-                            ? "Commercial Plaza"
-                            : project.type[0] === "residential"
-                            ? "Residential Houses"
-                            : project.type[0]}
-                          {project.keyFacts[3] ? ` • ${project.keyFacts[3].value}` : ""}
-                        </span>
+                      <div className="text-sm font-medium truncate pt-1 drop-shadow-sm pb-2 text-slate-300">
+                        {project.locationName}, {project.city}, PK
+                      </div>
+
+                      <hr className="my-3 border-white/20" />
+
+                      <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium pt-1 text-white/90">
+                        <div className="flex items-center gap-1.5">
+                          <HomeIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <span>{project.type[0] === "commercial" ? "Commercial" : "Residential"}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Square2StackIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <span className="truncate max-w-[120px]">{project.keyFacts[3] ? project.keyFacts[3].value.split(' ')[0] : "Turnkey"}</span>
+                        </div>
                       </div>
 
                       {isActive && (
                         <motion.div
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="pt-2"
+                          className="pt-4"
                         >
                           <button
                             type="button"
@@ -282,7 +306,7 @@ export function ThreeDProjectsGallery() {
                               e.stopPropagation();
                               setModalProject(project);
                             }}
-                            className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white text-[#1a2b4a] text-xs font-extrabold uppercase tracking-wider hover:bg-slate-100 hover:shadow-2xl transition-all shadow-xl cursor-pointer"
+                            className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white text-[#1a2b4a] text-xs sm:text-sm font-extrabold uppercase tracking-wider hover:bg-slate-100 hover:shadow-2xl transition-all shadow-xl cursor-pointer"
                           >
                             Inspect 3D Details & Plans
                             <ArrowRightIcon className="w-4 h-4 shrink-0" />
@@ -338,33 +362,36 @@ export function ThreeDProjectsGallery() {
 
         {/* ─── FOCUSED PROJECT QUICK SPECIFICATION BAR ────────────────────── */}
         {activeProject && totalProjects > 0 && (
-          <div className="mt-8 bg-slate-50 border border-slate-200 rounded-3xl p-6 md:p-8 max-w-4xl mx-auto shadow-lg">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="space-y-2 text-center md:text-left">
-                <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-secondary)] font-sans">
+          <div 
+            className="w-full border-b border-slate-200"
+            style={{ marginTop: '40px', paddingTop: '0px', paddingBottom: '40px', marginBottom: '40px' }}
+          >
+            <div className="flex flex-col items-center justify-center gap-6 w-full max-w-[1600px] mx-auto px-4 sm:px-8 text-center">
+              <div className="flex flex-col items-center space-y-2">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#0052cc] font-sans">
                   Focused Project Details
                 </span>
-                <h4 className="font-sans font-extrabold text-xl sm:text-2xl text-[var(--color-text-primary)]">
-                  {activeProject.name} — {activeProject.locationName}, {activeProject.city}
+                <h4 className="font-sans font-extrabold text-2xl sm:text-3xl text-[#1a2b4a] tracking-tight max-w-4xl">
+                  {activeProject.name.replace("Completed Residential Houses — ", "")} — {activeProject.locationName}, {activeProject.city}
                 </h4>
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-1 text-xs text-[var(--color-text-muted)] font-sans">
-                  <span className="flex items-center gap-1.5 font-semibold text-[var(--color-text-primary)]">
-                    <CheckCircleIcon className="w-4 h-4 text-[var(--color-brand-secondary)]" />
-                    25% Advance Booking
+                <div className="flex flex-wrap items-center justify-center gap-5 pt-3 text-sm font-sans">
+                  <span className="flex items-center gap-1.5 font-bold text-slate-600">
+                    <CheckCircleIcon className="w-4 h-4 text-[#0052cc]" />
+                    {activeProject.status === "ongoing" ? "25% Advance Booking" : "Ready For Possession"}
                   </span>
-                  <span className="flex items-center gap-1.5 font-semibold text-[var(--color-text-primary)]">
-                    <ClockIcon className="w-4 h-4 text-[var(--color-brand-secondary)]" />
-                    3-Year Installment Plan
+                  <span className="flex items-center gap-1.5 font-bold text-slate-600">
+                    <ClockIcon className="w-4 h-4 text-[#0052cc]" />
+                    {activeProject.status === "ongoing" ? "3-Year Installment Plan" : "Turnkey Handover"}
                   </span>
                 </div>
               </div>
 
               <Link
                 href={`/projects/${activeProject.slug}`}
-                className="px-6 py-3 rounded-full bg-[#1a2b4a] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#0f172a] transition-all shadow-md shrink-0 inline-flex items-center gap-2"
+                className="group inline-flex items-center justify-center gap-2 text-sm font-bold text-[#0052cc] hover:text-[#00398f] transition-colors pb-1 mt-2"
               >
-                Open Dedicated Project Page
-                <ArrowRightIcon className="w-4 h-4 text-white" />
+                View Full Project Page
+                <ArrowRightIcon className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
