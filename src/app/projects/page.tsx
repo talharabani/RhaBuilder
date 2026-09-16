@@ -4,9 +4,9 @@ import { ThreeDProjectsGallery } from "@/components/sections/ThreeDProjectsGalle
 import { CTABand } from "@/components/sections/CTABand";
 
 export const metadata: Metadata = {
-  title: "Projects | RHA Builder Residential & Commercial Developments",
+  title: "Commercial & Residential Projects in Lahore & Islamabad | RHA Builders",
   description:
-    "Explore ongoing and completed RHA Builder projects, including residential and commercial developments. Filter the portfolio and view project details.",
+    "Explore ongoing and completed projects by RHA Builders, the top real estate developers in Pakistan. View our premium commercial plazas and residential homes.",
   alternates: { canonical: "https://rhabuilder.com/projects" },
   robots: { index: true, follow: true },
 };
@@ -22,7 +22,7 @@ export default function ProjectsPage() {
         >
           <Image
             src="/images/projects-hero-bg.jpg"
-            alt="RHA Builder Portfolio & Projects - Residential and Commercial Developments"
+            alt="RHA Builders Portfolio & Projects - Residential and Commercial Developments"
             fill
             priority
             className="object-cover object-[70%_center]"

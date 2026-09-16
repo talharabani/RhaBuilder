@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -40,9 +40,10 @@ export function ThreeDProjectsGallery() {
   const [isAutoPlay, setIsAutoPlay] = useState<boolean>(true);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [modalProject, setModalProject] = useState<Project | null>(null);
+  const lastClickTime = useRef<number>(0);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -56,11 +57,19 @@ export function ThreeDProjectsGallery() {
   const totalProjects = displayProjects.length;
 
   const handleNext = () => {
+    const now = Date.now();
+    if (now - lastClickTime.current < 400) return;
+    lastClickTime.current = now;
+    
     if (totalProjects === 0) return;
     setActiveIndex((prev) => (prev + 1) % totalProjects);
   };
 
   const handlePrev = () => {
+    const now = Date.now();
+    if (now - lastClickTime.current < 400) return;
+    lastClickTime.current = now;
+
     if (totalProjects === 0) return;
     setActiveIndex((prev) => (prev - 1 + totalProjects) % totalProjects);
   };

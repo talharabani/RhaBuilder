@@ -24,8 +24,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://rhabuilder.com"),
   title: {
-    default: "RHA Builders | Residential & Commercial Real Estate Development",
-    template: "%s | RHA Builders",
+    default: "RHA Builders | Top Commercial & Residential Real Estate Developers in Pakistan",
+    template: "%s | RHA Builders Pakistan",
   },
   icons: {
     icon: [
@@ -35,31 +35,35 @@ export const metadata: Metadata = {
     apple: "/icon.png",
   },
   description:
-    "Explore RHA Builder's residential and commercial developments, construction capabilities, project updates and opportunities. Speak with our team.",
+    "RHA Builders is the premier real estate development and construction firm in Lahore and Islamabad, Pakistan. Specializing in commercial plazas, turnkey residential homes, and secure 3-year investment plans.",
   keywords: [
-    "real estate development",
-    "residential construction",
-    "commercial development",
-    "property developer",
-    "construction company",
-    "RHA Builder",
+    "RHA Builders",
+    "RHA Builders Pakistan",
+    "RHA Builders Lahore",
+    "commercial real estate developers Lahore",
+    "top construction company Islamabad",
+    "commercial plazas for sale",
+    "buy shops on installment Lahore",
+    "residential construction Pakistan",
+    "turnkey homes Pakistan",
+    "Ansa Tower",
   ],
-  authors: [{ name: "RHA Builder" }],
-  creator: "RHA Builder",
+  authors: [{ name: "RHA Builders" }],
+  creator: "RHA Builders",
   openGraph: {
     type: "website",
     locale: "en_GB",
     url: "https://rhabuilder.com",
-    siteName: "RHA Builder",
-    title: "RHA Builder | Residential & Commercial Real Estate Development",
+    siteName: "RHA Builders",
+    title: "RHA Builders | Top Real Estate Developers in Pakistan",
     description:
-      "Explore RHA Builder's residential and commercial developments, construction capabilities, project updates and opportunities.",
+      "Explore RHA Builders' premium commercial and residential developments in Lahore and Islamabad. Secure your property with our 3-year installment plans.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "RHA Builder | Residential & Commercial Real Estate Development",
+    title: "RHA Builders | Premium Real Estate Developers in Pakistan",
     description:
-      "Explore RHA Builder's residential and commercial developments, construction capabilities and opportunities.",
+      "Explore RHA Builders' premium commercial and residential developments in Lahore and Islamabad.",
   },
   robots: {
     index: true,
@@ -93,26 +97,66 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        {/* JSON-LD Organization Structured Data */}
+        {/* JSON-LD Structured Data for LocalBusiness & AEO FAQ */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "RHA Builder",
-              url: "https://rhabuilder.com",
-              logo: "https://rhabuilder.com/images/rha-logo.png",
-              telephone: SITE_CONTACT.phoneRaw,
-              email: SITE_CONTACT.email,
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "PK",
-                streetAddress: SITE_CONTACT.address,
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": ["RealEstateBuilder", "LocalBusiness"],
+                name: "RHA Builders",
+                url: "https://rhabuilder.com",
+                logo: "https://rhabuilder.com/images/rha-logo.png",
+                image: "https://rhabuilder.com/images/rha-logo.png",
+                telephone: SITE_CONTACT.phoneRaw,
+                email: SITE_CONTACT.email,
+                address: {
+                  "@type": "PostalAddress",
+                  addressCountry: "PK",
+                  addressLocality: "Lahore",
+                  streetAddress: SITE_CONTACT.address,
+                },
+                geo: {
+                  "@type": "GeoCoordinates",
+                  latitude: "31.5204",
+                  longitude: "74.3587",
+                },
+                areaServed: ["Lahore", "Islamabad", "Pakistan"],
+                description:
+                  "RHA Builders is a premier real estate development and construction company in Pakistan, specializing in commercial plazas and residential properties with flexible installment plans.",
               },
-              description:
-                "RHA Builder is a real estate development and construction company focused on creating well-planned residential and commercial environments.",
-            }),
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "Who are the top commercial plaza builders in Lahore?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "RHA Builders is one of the top commercial plaza builders in Lahore and Islamabad, specializing in premium commercial properties like Ansa Tower with world-class amenities."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Does RHA Builders offer installment plans for commercial shops?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Yes, RHA Builders offers highly flexible 3-year quarterly installment plans for commercial shops, allowing for secure and manageable investments."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Who is the CEO of RHA Builders?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "RHA Builders was established in 2006 under the leadership of CEO Faryad Hussain, who brings decades of expertise in construction and real estate development across Pakistan."
+                    }
+                  }
+                ]
+              }
+            ]),
           }}
         />
       </head>

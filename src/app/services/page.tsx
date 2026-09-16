@@ -12,9 +12,9 @@ import { StaggerContainer, StaggerItem } from "@/components/animation/StaggerCon
 import { InteractiveHover } from "@/components/animation/InteractiveHover";
 
 export const metadata: Metadata = {
-  title: "Real Estate Development & Construction Services | RHA Builder",
+  title: "Turnkey Construction & Real Estate Development Services | RHA Builders Pakistan",
   description:
-    "Discover RHA Builder's development and construction services for residential, commercial and property clients.",
+    "Discover RHA Builders' premium construction, architectural design, and property management services in Lahore and Islamabad, Pakistan. Delivering turnkey solutions.",
   alternates: { canonical: "https://rhabuilder.com/services" },
 };
 
@@ -74,7 +74,7 @@ export default function ServicesPage() {
         >
           <Image
             src="/images/services/services-hero-bg.png"
-            alt="RHA Builder Development & Construction Services Hero Background"
+            alt="RHA Builders Development & Construction Services Hero Background"
             fill
             priority
             className="object-cover object-[70%_center]"

@@ -12,8 +12,6 @@ import { ProjectCard } from "@/components/cards/ProjectCard";
 import { ServiceCard } from "@/components/cards/ServiceCard";
 import { BlogCard } from "@/components/cards/BlogCard";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { CTABand } from "@/components/sections/CTABand";
-import { LeadForm } from "@/components/sections/LeadForm";
 import { HeroCarouselBackground } from "@/components/sections/HeroCarouselBackground";
 import { HeroHeading } from "@/components/sections/HeroHeading";
 import { getFeaturedProjects } from "@/lib/data/projects";
@@ -22,13 +20,18 @@ import { getLatestBlogPosts } from "@/lib/data/blog";
 import { WhatsAppIcon } from "@/components/ui/Icons";
 import { SITE_CONTACT } from "@/lib/constants";
 import { AboutImageSlider } from "@/components/ui/AboutImageSlider";
-import { StatsBar } from "@/components/ui/AnimatedCounter";
-import { ThreeDProjectsGallery } from "@/components/sections/ThreeDProjectsGallery";
-import { NetflixServicesShowcase } from "@/components/sections/NetflixServicesShowcase";
 import { FadeInWhenVisible } from "@/components/animation/FadeInWhenVisible";
 import { StaggerContainer, StaggerItem } from "@/components/animation/StaggerContainer";
 import { TextReveal } from "@/components/animation/TextReveal";
 import { InteractiveHover } from "@/components/animation/InteractiveHover";
+import dynamic from "next/dynamic";
+
+// Dynamically import heavy components to reduce initial JS payload
+const ThreeDProjectsGallery = dynamic(() => import("@/components/sections/ThreeDProjectsGallery").then(mod => mod.ThreeDProjectsGallery), { ssr: false });
+const NetflixServicesShowcase = dynamic(() => import("@/components/sections/NetflixServicesShowcase").then(mod => mod.NetflixServicesShowcase));
+const LeadForm = dynamic(() => import("@/components/sections/LeadForm").then(mod => mod.LeadForm));
+const StatsBar = dynamic(() => import("@/components/ui/AnimatedCounter").then(mod => mod.StatsBar), { ssr: false });
+const CTABand = dynamic(() => import("@/components/sections/CTABand").then(mod => mod.CTABand));
 
 export const metadata: Metadata = {
   title: "RHA Builder | Residential & Commercial Real Estate Development",
@@ -101,7 +104,7 @@ export default function HomePage() {
                 className="text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 sm:mb-5 font-sans"
                 style={{ color: "var(--color-brand-accent)" }}
               >
-                Real Estate Development & Construction
+                Top Real Estate Developers in Pakistan
               </p>
             </FadeInWhenVisible>
 
@@ -113,8 +116,8 @@ export default function HomePage() {
               <p
                 className="hidden sm:block text-sm sm:text-base leading-relaxed mb-5 sm:mb-7 max-w-xl font-sans text-slate-600 text-left"
               >
-                Delivering excellence in commercial plazas and premium residential homes. <br className="hidden sm:block" />
-                We build spaces designed for structural integrity and lasting value.
+                Delivering excellence in commercial plazas and premium residential homes across Lahore and Islamabad. <br className="hidden sm:block" />
+                RHA Builders creates spaces designed for structural integrity and lasting value.
               </p>
             </FadeInWhenVisible>
 
@@ -217,6 +220,7 @@ export default function HomePage() {
                 loop
                 playsInline
                 preload="metadata"
+                poster="/images/hero.webp"
               >
                 <source src="/images/IMG_0716.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
@@ -365,6 +369,34 @@ export default function HomePage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ─── AEO FAQ SECTION (SEO & Voice Search) ───────────────────────── */}
+      <section className="py-12 md:py-20 px-3 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
+        <div className="container-site max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-xs font-bold tracking-widest uppercase text-[#0052cc] mb-3 font-sans">
+              Frequently Asked Questions
+            </h2>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1a2b4a] tracking-tight font-sans">
+              Everything You Need to Know About RHA Builders
+            </h3>
+          </div>
+          <div className="space-y-4">
+            <div className="bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-slate-100 hover:border-[#0052cc] transition-colors">
+              <h4 className="font-bold text-lg text-[#1a2b4a] mb-2 font-sans">Who are the top commercial plaza builders in Lahore?</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">RHA Builders is recognized as one of the top commercial plaza builders and real estate developers in Lahore and Islamabad, specializing in premium, turnkey commercial properties like Ansa Tower with world-class amenities and structural integrity.</p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-slate-100 hover:border-[#0052cc] transition-colors">
+              <h4 className="font-bold text-lg text-[#1a2b4a] mb-2 font-sans">Does RHA Builders offer installment plans for commercial shops?</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">Yes, RHA Builders offers highly flexible and secure 3-year quarterly installment plans for commercial shops and residential units, allowing investors to secure prime real estate with manageable payments.</p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-slate-100 hover:border-[#0052cc] transition-colors">
+              <h4 className="font-bold text-lg text-[#1a2b4a] mb-2 font-sans">Who is the CEO of RHA Builders?</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">RHA Builders was established in 2006 under the visionary leadership of CEO Faryad Hussain, who brings decades of extensive expertise in construction, engineering, and real estate development across Pakistan.</p>
+            </div>
+          </div>
         </div>
       </section>
 
