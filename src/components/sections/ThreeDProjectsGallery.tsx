@@ -327,7 +327,11 @@ export function ThreeDProjectsGallery() {
             {totalProjects > 1 && (
               <>
                 <button
-                  onClick={handlePrev}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handlePrev();
+                  }}
                   className="absolute left-1 sm:left-4 md:left-8 z-30 p-3 rounded-full bg-white text-[var(--color-brand-primary)] border border-slate-200 hover:bg-[#1a2b4a] hover:text-white transition-all shadow-xl cursor-pointer"
                   aria-label="Previous 3D Project"
                 >
@@ -335,7 +339,11 @@ export function ThreeDProjectsGallery() {
                 </button>
 
                 <button
-                  onClick={handleNext}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleNext();
+                  }}
                   className="absolute right-1 sm:right-4 md:right-8 z-30 p-3 rounded-full bg-white text-[var(--color-brand-primary)] border border-slate-200 hover:bg-[#1a2b4a] hover:text-white transition-all shadow-xl cursor-pointer"
                   aria-label="Next 3D Project"
                 >
