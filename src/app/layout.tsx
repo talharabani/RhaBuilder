@@ -58,12 +58,21 @@ export const metadata: Metadata = {
     title: "RHA Builders | Top Real Estate Developers in Pakistan",
     description:
       "Explore RHA Builders' premium commercial and residential developments in Lahore and Islamabad. Secure your property with our 3-year installment plans.",
+    images: [
+      {
+        url: "https://rhabuilder.com/images/rha-logo-blue.png",
+        width: 1200,
+        height: 630,
+        alt: "RHA Builders — Top Commercial & Residential Real Estate Developers in Pakistan",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "RHA Builders | Premium Real Estate Developers in Pakistan",
     description:
       "Explore RHA Builders' premium commercial and residential developments in Lahore and Islamabad.",
+    images: ["https://rhabuilder.com/images/rha-logo-blue.png"],
   },
   robots: {
     index: true,
@@ -86,16 +95,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${figtree.variable} ${inter.variable} overflow-x-hidden max-w-full`}>
       <head>
-        {/* Preconnect for Google Fonts (Figtree) */}
+        {/* Preconnect for Google Fonts — actual fonts loaded via next/font/google */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
         />
         {/* JSON-LD Structured Data for LocalBusiness & AEO FAQ */}
         <script

@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getBlogPostBySlug(slug);
   if (!post) return {};
   return {
-    title: `${post.title} | RHA Builder`,
+    title: `${post.title} | RHA Builders`,
     description: post.excerpt,
     alternates: { canonical: `https://rhabuilder.com/blog/${slug}` },
     openGraph: {
@@ -184,14 +184,14 @@ export default async function BlogArticlePage({ params }: PageProps) {
             datePublished: post.publishedAt,
             dateModified: post.updatedAt ?? post.publishedAt,
             author: { "@type": "Person", name: post.author },
-            publisher: { "@type": "Organization", name: "RHA Builder" },
+            publisher: { "@type": "Organization", name: "RHA Builders" },
             url: `https://rhabuilder.com/blog/${post.slug}`,
           }),
         }}
       />
 
       <CTABand
-        title="Explore RHA Builder Projects"
+        title="Explore RHA Builders Projects"
         description="See the full portfolio of residential and commercial developments."
         primaryLabel="View All Projects"
         primaryHref="/projects"

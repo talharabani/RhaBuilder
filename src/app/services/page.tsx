@@ -130,7 +130,7 @@ export default function ServicesPage() {
                 Our Development Process.
               </h3>
               <p className="mt-4 text-base text-slate-500 font-sans leading-relaxed max-w-2xl">
-                A general overview of how RHA Builder approaches development and construction projects. Click any stage card below to view process details.
+                A general overview of how RHA Builders approaches development and construction projects. Click any stage card below to view process details.
               </p>
             </div>
           </FadeInWhenVisible>
@@ -189,14 +189,14 @@ export default function ServicesPage() {
           </StaggerContainer>
 
           <p className="mt-10 text-xs italic text-center font-sans text-slate-500">
-            [Process description is indicative and subject to confirmation with RHA Builder]
+            [Process description is indicative and subject to confirmation with RHA Builders]
           </p>
         </div>
       </section>
 
       <CTABand
         title="Discuss Your Development or Construction Project"
-        description="Contact the RHA Builder team to explore how we can support your requirements."
+        description="Contact the RHA Builders team to explore how we can support your requirements."
         primaryLabel="Discuss Your Project"
         primaryHref="/contact"
         secondaryLabel="View Our Projects"

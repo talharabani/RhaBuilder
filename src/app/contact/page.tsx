@@ -4,9 +4,9 @@ import { LeadForm } from "@/components/sections/LeadForm";
 import { SITE_CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Contact RHA Builder | Corporate Office & Project Enquiries",
+  title: "Contact RHA Builders | Corporate Office & Project Enquiries",
   description:
-    "Contact RHA Builder or visit our corporate office at Mochi, Ghalib Street #20, Barkat, Outside Nawazish Ali Rd, Gate, Lahore. Speak with our team.",
+    "Contact RHA Builders or visit our corporate office at Mochi, Ghalib Street #20, Barkat, Outside Nawazish Ali Rd, Gate, Lahore. Speak with our team.",
   alternates: { canonical: "https://rhabuilder.com/contact" },
 };
 
@@ -31,7 +31,7 @@ export default function ContactPage() {
         >
           <Image
             src="/images/contact-hero-bg.jpg"
-            alt="Contact RHA Builder Development & Construction Team"
+            alt="Contact RHA Builders Development & Construction Team"
             fill
             priority
             className="object-cover object-[70%_center]"
@@ -63,7 +63,7 @@ export default function ContactPage() {
                 Contact Us
               </h1>
               <p className="mt-2 sm:mt-4 text-[10px] sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed w-[95%] sm:w-full max-w-2xl">
-                <span className="block sm:inline">Get in touch with RHA Builder</span>
+                <span className="block sm:inline">Get in touch with RHA Builders</span>
                 <span className="hidden sm:inline"> </span>
                 <span className="block sm:inline">corporate office and project</span>
                 <span className="hidden sm:inline"> </span>

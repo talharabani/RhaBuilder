@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | RHA Builder",
-  description: "Privacy Policy for RHA Builder website.",
+  title: "Privacy Policy | RHA Builders",
+  description: "Privacy Policy for RHA Builders website.",
+  alternates: { canonical: "https://rhabuilder.com/privacy-policy" },
   robots: { index: false, follow: true },
 };
 
@@ -41,7 +42,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2>1. Introduction</h2>
             <p>
-              RHA Builder (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting
+              RHA Builders (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting
               your personal data. This privacy policy explains how we collect,
               use, store and protect information you provide to us through our
               website and related communications.

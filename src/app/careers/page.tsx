@@ -6,9 +6,9 @@ import { CTABand } from "@/components/sections/CTABand";
 import { getActiveJobs } from "@/lib/data/careers";
 
 export const metadata: Metadata = {
-  title: "Careers | RHA Builder — Join Our Team",
+  title: "Careers | RHA Builders — Join Our Team",
   description:
-    "Explore career opportunities at RHA Builder. We are always looking for talented professionals across real estate development, construction and commercial management.",
+    "Explore career opportunities at RHA Builders. We are always looking for talented professionals across real estate development, construction and commercial management.",
   alternates: { canonical: "https://rhabuilder.com/careers" },
 };
 
@@ -40,7 +40,7 @@ export default function CareersPage() {
             </ol>
           </nav>
           <h1 className="font-display font-semibold text-white max-w-2xl" style={{ fontSize: "clamp(2.25rem, 4vw, 3.5rem)" }}>
-            Build Your Career With RHA Builder
+            Build Your Career With RHA Builders
           </h1>
           <p className="mt-4 text-lg max-w-xl" style={{ color: "var(--color-text-on-dark-muted)" }}>
             We are looking for talented professionals to join our growing development and construction team.
@@ -55,17 +55,17 @@ export default function CareersPage() {
             <div>
               <SectionHeader
                 eyebrow="Why Join Us"
-                title="Why Work at RHA Builder"
+                title="Why Work at RHA Builders"
                 id="why-rha-careers-heading"
               />
               <p className="mt-5 text-base leading-relaxed" style={{ color: "var(--color-text-muted)" }}>
-                At RHA Builder, we work on meaningful projects that require real expertise and create places that people use every day. Our team is collaborative, experienced and committed to delivering high-quality work.
+                At RHA Builders, we work on meaningful projects that require real expertise and create places that people use every day. Our team is collaborative, experienced and committed to delivering high-quality work.
               </p>
               <p className="mt-4 text-base leading-relaxed" style={{ color: "var(--color-text-muted)" }}>
                 We support our people in developing their careers and provide a stable, project-driven environment where good work is recognised.
               </p>
               <p className="mt-4 text-xs italic" style={{ color: "var(--color-text-muted)" }}>
-                [Employer value proposition content to be confirmed with RHA Builder HR team]
+                [Employer value proposition content to be confirmed with RHA Builders HR team]
               </p>
             </div>
 
@@ -170,8 +170,8 @@ export default function CareersPage() {
 
       <CTABand
         title="Not Ready to Apply Yet?"
-        description="Find out more about RHA Builder and our current project portfolio."
-        primaryLabel="About RHA Builder"
+        description="Find out more about RHA Builders and our current project portfolio."
+        primaryLabel="About RHA Builders"
         primaryHref="/about"
         secondaryLabel="View Projects"
         secondaryHref="/projects"

@@ -54,7 +54,7 @@ export default function ProjectsPage() {
                 Our Projects
               </h1>
               <p className="mt-2 sm:mt-4 text-[10px] sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed w-[95%] sm:w-full max-w-2xl">
-                <span className="block sm:inline">Explore RHA Builder developments</span>
+                <span className="block sm:inline">Explore RHA Builders developments</span>
                 <span className="hidden sm:inline"> </span>
                 <span className="block sm:inline">across residential and</span>
                 <span className="hidden sm:inline"> </span>

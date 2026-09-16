@@ -34,9 +34,9 @@ const StatsBar = dynamic(() => import("@/components/ui/AnimatedCounter").then(mo
 const CTABand = dynamic(() => import("@/components/sections/CTABand").then(mod => mod.CTABand));
 
 export const metadata: Metadata = {
-  title: "RHA Builder | Residential & Commercial Real Estate Development",
+  title: "RHA Builders | Residential & Commercial Real Estate Development",
   description:
-    "Explore RHA Builder's residential and commercial developments, construction capabilities, project updates and opportunities. Speak with our team.",
+    "Explore RHA Builders' residential and commercial developments, construction capabilities, project updates and opportunities. Speak with our team.",
   alternates: { canonical: "https://rhabuilder.com" },
 };
 
@@ -276,7 +276,7 @@ export default function HomePage() {
               <h2
                 className="text-xs font-bold tracking-widest uppercase text-[#0052cc] mb-3 font-sans"
               >
-                Why RHA Builder
+                Why RHA Builders
               </h2>
               <h3
                 id="why-rha-heading"
@@ -344,7 +344,7 @@ export default function HomePage() {
                   News & Insights
                 </h2>
                 <h3 id="blog-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1a2b4a] tracking-tight leading-[1.1] font-sans mb-4">
-                  Latest from RHA Builder.
+                  Latest from RHA Builders.
                 </h3>
                 <p className="text-sm leading-relaxed text-slate-500 max-w-xl">
                   Project updates, property insights and company news.

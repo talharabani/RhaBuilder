@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | RHA Builder",
-  description: "Terms and Conditions for RHA Builder website.",
+  title: "Terms & Conditions | RHA Builders",
+  description: "Terms and Conditions for RHA Builders website.",
+  alternates: { canonical: "https://rhabuilder.com/terms-and-conditions" },
   robots: { index: false, follow: true },
 };
 
@@ -42,7 +43,7 @@ export default function TermsPage() {
           <section>
             <h2>1. Use of This Website</h2>
             <p>
-              This website is operated by RHA Builder. By accessing or using
+              This website is operated by RHA Builders. By accessing or using
               this website, you agree to these terms and conditions. If you do
               not agree, please do not use this website.
             </p>
@@ -60,7 +61,7 @@ export default function TermsPage() {
             </p>
             <p>
               Project details, specifications, availability, pricing and
-              timelines are subject to change. RHA Builder does not guarantee
+              timelines are subject to change. RHA Builders does not guarantee
               the accuracy, completeness or currency of information on this
               website.
             </p>
@@ -71,7 +72,7 @@ export default function TermsPage() {
             <p>
               Any references to investment opportunities on this website are
               for informational purposes only. Past performance is not
-              indicative of future results. RHA Builder makes no representations
+              indicative of future results. RHA Builders makes no representations
               or warranties regarding investment returns, rental yields or any
               other financial outcomes. You should seek qualified independent
               financial and legal advice before making any investment decision.
@@ -95,7 +96,7 @@ export default function TermsPage() {
 
           <section>
             <h2>7. Governing Law</h2>
-            <p>[Governing law and jurisdiction to be specified by legal counsel based on RHA Builder&apos;s operating territory.]</p>
+            <p>[Governing law and jurisdiction to be specified by legal counsel based on RHA Builders&apos;s operating territory.]</p>
           </section>
 
           <section>

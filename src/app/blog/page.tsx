@@ -5,9 +5,9 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { blogPosts, blogCategories, getFeaturedBlogPost } from "@/lib/data/blog";
 
 export const metadata: Metadata = {
-  title: "Blog & News | RHA Builder Property & Construction Insights",
+  title: "Blog & News | RHA Builders Property & Construction Insights",
   description:
-    "Project updates, property insights, construction news and company announcements from RHA Builder.",
+    "Project updates, property insights, construction news and company announcements from RHA Builders.",
   alternates: { canonical: "https://rhabuilder.com/blog" },
 };
 
@@ -25,7 +25,7 @@ export default function BlogPage() {
         >
           <Image
             src="/images/blog-hero-bg.png"
-            alt="RHA Builder Blog & News - Building Better Communities"
+            alt="RHA Builders Blog & News - Building Better Communities"
             fill
             priority
             className="object-cover object-[70%_center]"
@@ -57,7 +57,7 @@ export default function BlogPage() {
                 Blog & News
               </h1>
               <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed max-w-2xl">
-                Project updates, property insights and company news from the RHA Builder team.
+                Project updates, property insights and company news from the RHA Builders team.
               </p>
             </div>
           </div>

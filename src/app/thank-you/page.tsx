@@ -3,8 +3,8 @@ import Link from "next/link";
 import { CheckCircleIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
-  title: "Thank You | RHA Builder",
-  description: "Thank you for your enquiry. The RHA Builder team will be in touch shortly.",
+  title: "Thank You | RHA Builders",
+  description: "Thank you for your enquiry. The RHA Builders team will be in touch shortly.",
   robots: { index: false, follow: false },
 };
 
@@ -21,7 +21,7 @@ export default function ThankYouPage() {
             Thank You
           </h1>
           <p className="text-base leading-relaxed mb-8" style={{ color: "var(--color-text-muted)" }}>
-            Your enquiry has been received. A member of the RHA Builder team will
+            Your enquiry has been received. A member of the RHA Builders team will
             be in touch with you shortly.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const job = getJobBySlug(slug);
   if (!job) return {};
   return {
-    title: `${job.title} | Careers at RHA Builder`,
+    title: `${job.title} | Careers at RHA Builders`,
     description: job.summary,
     alternates: { canonical: `https://rhabuilder.com/careers/${slug}` },
     robots: job.active ? { index: true, follow: true } : { index: false },

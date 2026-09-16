@@ -27,9 +27,9 @@ import { AboutInteractiveProcess } from "@/components/sections/AboutInteractiveP
 import { SITE_CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "About RHA Builder | Commercial Plazas & Residential Development Excellence",
+  title: "About RHA Builders | Commercial Plazas & Residential Development Excellence",
   description:
-    "Discover RHA Builder: established in 2006 by CEO Faryad Hussain. Premier commercial plazas, 25% advance shop sales with 3-year payment plans, and turnkey residential house construction in Lahore & Islamabad.",
+    "Discover RHA Builders: established in 2006 by CEO Faryad Hussain. Premier commercial plazas, 25% advance shop sales with 3-year payment plans, and turnkey residential house construction in Lahore & Islamabad.",
   alternates: { canonical: "https://rhabuilder.com/about" },
 };
 
@@ -144,11 +144,11 @@ export default function AboutPage() {
       <div className="px-3 sm:px-6 lg:px-8 py-4 lg:py-6 w-full max-w-[1600px] mx-auto">
         <section
           className="relative min-h-[45vh] flex items-center overflow-hidden rounded-3xl sm:rounded-[2rem] w-full bg-white border border-slate-200/90 shadow-[0_20px_50px_rgba(15,23,42,0.08)]"
-          aria-label="About RHA Builder hero"
+          aria-label="About RHA Builders hero"
         >
           <Image
             src="/images/helicopter.png"
-            alt="RHA Builder Architectural Development"
+            alt="RHA Builders Architectural Development"
             fill
             priority
             className="object-cover object-[70%_center]"
@@ -235,7 +235,7 @@ export default function AboutPage() {
               <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-xl bg-slate-950">
                 <Image
                   src="/images/faryad_group.png"
-                  alt="RHA Builder executive engineering leadership"
+                  alt="RHA Builders executive engineering leadership"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -490,7 +490,7 @@ export default function AboutPage() {
       {/* ─── 9. CTA BAND ─────────────────────────────────────────── */}
       <CTABand
         title="Ready to Discuss Your Real Estate Project?"
-        description="Connect with RHA Builder's CEO Faryad Hussain and executive team to discuss shop bookings, payment plans, or residential house builds."
+        description="Connect with RHA Builders's CEO Faryad Hussain and executive team to discuss shop bookings, payment plans, or residential house builds."
         primaryLabel="Contact Executive Team"
         primaryHref="/contact"
         secondaryLabel="Meet the Team"
