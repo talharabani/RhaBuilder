@@ -65,12 +65,26 @@ export function LeadForm({
   const onSubmit = async (data: FormData) => {
     setServerError(null);
     try {
-      const res = await fetch("/api/contact", {
+      const payload = {
+        ...data,
+        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "05e57c24-0886-4218-b429-131747563657",
+        subject: `New Website Lead: ${data.fullName} - ${data.interest}`,
+        from_name: "RHA Builders Contact Form",
+        replyto: data.email, // This allows you to just hit 'Reply' in Gmail to email the customer back!
+      };
+
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error("Submission failed");
+      
+      const result = await res.json();
+      if (!result.success) throw new Error("Submission failed");
+      
       setSubmitted(true);
       // Analytics event would fire here in production
     } catch {
