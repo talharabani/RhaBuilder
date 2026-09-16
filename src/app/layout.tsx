@@ -8,7 +8,7 @@ import { SITE_CONTACT } from "@/lib/constants";
 import { BookSiteVisitProvider } from "@/context/BookSiteVisitContext";
 import { BookSiteVisitModal } from "@/components/ui/BookSiteVisitModal";
 import { ScrollProgressBar } from "@/components/animation/ScrollProgressBar";
-
+import { Preloader } from "@/components/ui/Preloader";
 const figtree = Figtree({
   subsets: ["latin"],
   variable: "--font-figtree",
@@ -161,6 +161,7 @@ export default function RootLayout({
         />
       </head>
       <body className="flex flex-col min-h-screen font-sans overflow-x-hidden w-full max-w-full relative">
+        <Preloader />
         <ScrollProgressBar />
         <BookSiteVisitProvider>
           {/* Skip to main content — accessibility requirement */}
