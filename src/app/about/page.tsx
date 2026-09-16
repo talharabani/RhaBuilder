@@ -162,10 +162,10 @@ export default function AboutPage() {
             }}
             aria-hidden="true"
           />
-          <div className="w-full relative z-10 py-12 sm:py-16 lg:py-20 p-8 md:p-12 lg:p-[4.5rem]">
-            <div className="max-w-3xl">
-              <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
-                <ol className="flex items-center gap-2 text-sm sm:text-base font-sans text-slate-500 font-medium">
+          <div className="w-full relative z-10 py-10 sm:py-16 lg:py-20 p-5 sm:p-8 md:p-12 lg:p-[4.5rem]">
+            <div className="w-[45%] sm:w-[65%] md:w-full max-w-3xl">
+              <nav aria-label="Breadcrumb" className="mb-3 sm:mb-6">
+                <ol className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-base font-sans text-slate-500 font-medium">
                   <li>
                     <Link href="/" className="hover:text-[#0052cc] transition-colors">
                       Home
@@ -178,15 +178,19 @@ export default function AboutPage() {
                 </ol>
               </nav>
 
-              <p className="text-xs font-bold tracking-widest uppercase mb-4 font-sans text-[#0052cc]">
-                Established 2006 Real Estate & Construction Leadership
+              <p className="text-[8px] sm:text-xs font-bold tracking-widest uppercase mb-2 sm:mb-4 font-sans text-[#0052cc]">
+                <span className="block sm:inline">Established 2006</span>
+                <span className="hidden sm:inline"> </span>
+                <span className="block sm:inline">Real Estate &</span>
+                <span className="hidden sm:inline"> </span>
+                <span className="block sm:inline">Construction Leadership</span>
               </p>
 
-              <h1 className="font-figtree font-bold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-5">
+              <h1 className="font-figtree font-bold text-[#1a2b4a] text-2xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-3 sm:mb-5">
                 About RHA Builders
               </h1>
 
-              <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed max-w-2xl">
+              <p className="mt-2 sm:mt-4 text-[10px] sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed w-[85%] sm:w-full max-w-2xl">
                 Delivering commercial plazas, shop sales on 25% advance and 3-year installment plans, and custom residential houses across Lahore & Islamabad since 2006.
               </p>
             </div>
@@ -196,21 +200,21 @@ export default function AboutPage() {
 
       {/* ─── 2. STATS BAR (Matching homepage StatsBar design) ──────── */}
       <section className="bg-white pb-16 md:pb-24 px-3 sm:px-6 lg:px-8">
-        <div className="w-full max-w-6xl mx-auto -mt-10 relative z-20">
-          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-slate-200">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="w-[90%] sm:w-full max-w-6xl mx-auto -mt-8 sm:-mt-10 relative z-20">
+          <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl border border-slate-200">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {STATS.map((stat, idx) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={idx} className="flex items-center gap-4">
+                  <div key={idx} className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
                     <div className="text-[#0052cc] flex items-center justify-center shrink-0">
-                      <Icon className="w-10 h-10 stroke-[1.5]" />
+                      <Icon className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 stroke-[1.5]" />
                     </div>
-                    <div>
-                      <p className="font-sans font-extrabold text-2xl md:text-3xl text-slate-800 tracking-tight leading-none">
+                    <div className="text-center sm:text-left">
+                      <p className="font-sans font-extrabold text-lg sm:text-2xl md:text-3xl text-slate-800 tracking-tight leading-none">
                         {stat.value}
                       </p>
-                      <p className="text-xs text-slate-600 font-sans font-medium mt-0.5">
+                      <p className="text-[10px] sm:text-xs text-slate-600 font-sans font-medium mt-0.5 sm:mt-1 leading-tight">
                         {stat.label}
                       </p>
                     </div>
@@ -283,7 +287,7 @@ export default function AboutPage() {
               </div>
 
               {/* Core Feature Checkmarks */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div className="grid grid-cols-2 gap-3 pt-2">
                 {[
                   "Commercial Plaza Construction",
                   "25% Booking & 3-Year Payment Plans",

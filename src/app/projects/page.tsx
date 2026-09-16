@@ -36,11 +36,11 @@ export default function ProjectsPage() {
             aria-hidden="true"
           />
 
-          <div className="w-full relative z-10 py-12 sm:py-16 lg:py-20 p-8 md:p-12 lg:p-[4.5rem]">
-            <div className="max-w-3xl">
+          <div className="w-full relative z-10 py-10 sm:py-16 lg:py-20 p-5 sm:p-8 md:p-12 lg:p-[4.5rem]">
+            <div className="w-[45%] sm:w-[65%] md:w-full max-w-3xl">
               {/* Breadcrumb */}
-              <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
-                <ol className="flex items-center gap-2 text-sm sm:text-base font-sans text-slate-500 font-medium">
+              <nav aria-label="Breadcrumb" className="mb-3 sm:mb-6">
+                <ol className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-base font-sans text-slate-500 font-medium">
                   <li>
                     <a href="/" className="hover:text-[#0052cc] transition-colors">Home</a>
                   </li>
@@ -50,11 +50,15 @@ export default function ProjectsPage() {
                   </li>
                 </ol>
               </nav>
-              <h1 className="font-figtree font-bold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-5">
+              <h1 className="font-figtree font-bold text-[#1a2b4a] text-2xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-3 sm:mb-5">
                 Our Projects
               </h1>
-              <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed max-w-2xl">
-                Explore RHA Builder developments across residential and commercial categories.
+              <p className="mt-2 sm:mt-4 text-[10px] sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed w-[95%] sm:w-full max-w-2xl">
+                <span className="block sm:inline">Explore RHA Builder developments</span>
+                <span className="hidden sm:inline"> </span>
+                <span className="block sm:inline">across residential and</span>
+                <span className="hidden sm:inline"> </span>
+                <span className="block sm:inline">commercial categories.</span>
               </p>
             </div>
           </div>

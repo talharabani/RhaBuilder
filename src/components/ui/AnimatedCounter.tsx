@@ -108,19 +108,19 @@ export function StatsBar({ stats = DEFAULT_STATS, className = "" }: StatsBarProp
       aria-label="Company overview statistics"
     >
       <div className="container-site">
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-100">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+        <div className="bg-white rounded-3xl p-4 sm:p-10 border border-slate-100">
+          <div className="grid grid-cols-3 gap-2 sm:gap-0 divide-x divide-slate-100">
             {stats.map((stat) => (
-              <div key={stat.id} className="py-6 sm:py-2 px-6 text-center group">
+              <div key={stat.id} className="py-2 sm:py-2 px-1 sm:px-6 text-center group flex flex-col justify-start">
                 <div className="flex items-center justify-center">
                   <AnimatedCounter
                     target={stat.target}
                     suffix={stat.suffix}
                     prefix={stat.prefix}
-                    className="text-4xl lg:text-5xl tracking-tight text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors duration-300"
+                    className="text-sm sm:text-4xl lg:text-5xl tracking-tight text-[#1a2b4a] group-hover:text-[#0052cc] transition-colors duration-300"
                   />
                 </div>
-                <p className="text-xs font-bold uppercase tracking-widest mt-3 font-sans text-slate-500">
+                <p className="text-[8px] sm:text-xs font-bold uppercase tracking-widest mt-1 sm:mt-3 font-sans text-slate-500 leading-tight">
                   {stat.label}
                 </p>
               </div>

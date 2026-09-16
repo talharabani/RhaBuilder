@@ -231,6 +231,8 @@ export function ThreeDProjectsGallery() {
                             transformStyle: 'flat',
                             WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 50%)',
                             maskImage: 'linear-gradient(to bottom, transparent 0%, black 50%)',
+                            willChange: 'transform',
+                            transform: 'translateZ(0)',
                           }}
                         >
                           <img
@@ -244,8 +246,9 @@ export function ThreeDProjectsGallery() {
                               width: '100%',
                               height: '440px',
                               objectFit: 'cover',
-                              transform: 'scale(1.05)',
+                              transform: 'scale(1.05) translateZ(0)',
                               filter: 'blur(18px)',
+                              willChange: 'transform',
                             }}
                           />
                           {/* Dark blue tint over blurred area */}

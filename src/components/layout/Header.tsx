@@ -26,12 +26,12 @@ import { WhatsAppIcon } from "@/components/ui/Icons";
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
   { href: "/projects", label: "Projects", hasMegaMenu: true, megaMenuType: "projects" as const },
   { href: "/services", label: "Services", hasMegaMenu: true, megaMenuType: "services" as const },
   { href: "/team", label: "Team", hasMegaMenu: true, megaMenuType: "team" as const },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
-  { href: "/about", label: "About" },
 ];
 
 export function Header() {
@@ -251,16 +251,14 @@ export function Header() {
               aria-controls="mobile-nav"
               onClick={() => setMobileOpen((v) => !v)}
               className={cn(
-                "lg:hidden p-3 rounded-xl border transition-all duration-200 active:scale-95",
-                scrolled
-                  ? "text-[#1a2b4a] bg-slate-100 border-slate-200"
-                  : "text-white bg-white/10 border-white/20 backdrop-blur-md"
+                "lg:hidden p-2 transition-all duration-200 active:scale-95",
+                scrolled ? "text-[#1a2b4a]" : "text-white"
               )}
             >
               {mobileOpen ? (
-                <XMarkIcon className="w-6 h-6 stroke-[2.5]" aria-hidden="true" />
+                <XMarkIcon className="w-8 h-8 stroke-[1.5]" aria-hidden="true" />
               ) : (
-                <Bars3Icon className="w-6 h-6 stroke-[2.5]" aria-hidden="true" />
+                <Bars3Icon className="w-8 h-8 stroke-[1.5]" aria-hidden="true" />
               )}
             </button>
           </div>
@@ -1160,299 +1158,208 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile Nav Overlay */}
-      {mobileOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md lg:hidden transition-opacity duration-300"
-          aria-hidden="true"
-          onClick={() => setMobileOpen(false)}
-        />
-      )}
-
-      {/* Luxury Mobile Navigation Drawer */}
-      <div
-        ref={menuRef}
-        id="mobile-nav"
-        role="dialog"
-        aria-label="Navigation menu"
-        aria-modal="true"
-        className={cn(
-          "fixed top-0 right-0 bottom-0 z-50 w-[85%] max-w-[340px] bg-gradient-to-b from-[#1a2b4a] via-[#111c30] to-[#0a1220] text-white flex flex-col lg:hidden transition-all duration-300 ease-out shadow-2xl border-l border-white/10",
-          mobileOpen
-            ? "translate-x-0 pointer-events-auto opacity-100 visible"
-            : "translate-x-full pointer-events-none opacity-0 invisible hidden"
-        )}
-      >
-        {/* Drawer Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
-          <Link href="/" onClick={() => setMobileOpen(false)}>
-            <Logo variant="white" height={36} />
-          </Link>
-          <button
-            type="button"
-            onClick={() => {
-              setMobileOpen(false);
-              triggerRef.current?.focus();
-            }}
-            aria-label="Close navigation menu"
-            className="p-2 text-slate-300 hover:text-white rounded-xl bg-white/10 transition-colors"
+      {/* Fullscreen Animated Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            ref={menuRef}
+            id="mobile-nav"
+            role="dialog"
+            aria-label="Navigation menu"
+            aria-modal="true"
+            className="fixed inset-0 z-[100] w-full h-full bg-[#1a2b4a] text-white flex flex-col lg:hidden pointer-events-auto"
           >
-            <XMarkIcon className="w-5 h-5 stroke-[2.5]" aria-hidden="true" />
-          </button>
-        </div>
+            {/* Drawer Header */}
+            <div className="flex items-center justify-end px-6 py-6 w-full">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileOpen(false);
+                  triggerRef.current?.focus();
+                }}
+                className="p-2 text-white/70 hover:text-white transition-colors"
+                aria-label="Close navigation menu"
+              >
+                <XMarkIcon className="w-8 h-8 stroke-[1.5]" aria-hidden="true" />
+              </button>
+            </div>
 
-        {/* Navigation Links */}
-        <nav aria-label="Mobile navigation" className="flex-1 overflow-y-auto px-5 py-6">
-          <ul role="list" className="space-y-2">
-            {navLinks.map((link) => {
-              const isActive =
-                link.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(link.href);
+            {/* Navigation Links */}
+            <nav aria-label="Mobile navigation" className="flex-1 overflow-y-auto px-6 py-6 w-full">
+              <div className="flex flex-col items-center justify-center min-h-full w-full">
+                <ul role="list" className="flex flex-col items-center space-y-6 sm:space-y-8 w-full max-w-sm mx-auto py-10">
+                {navLinks.map((link, index) => {
+                  const isActive =
+                    link.href === "/"
+                      ? pathname === "/"
+                      : pathname.startsWith(link.href);
 
-              if (link.hasMegaMenu) {
-                const isProjects = link.megaMenuType === "projects";
-                const isServices = link.megaMenuType === "services";
-                const isTeam = link.megaMenuType === "team";
+                  if (link.hasMegaMenu) {
+                    const isProjects = link.megaMenuType === "projects";
+                    const isServices = link.megaMenuType === "services";
+                    const isTeam = link.megaMenuType === "team";
 
-                const isOpen = isProjects
-                  ? mobileProjectsOpen
-                  : isServices
-                  ? mobileServicesOpen
-                  : mobileTeamOpen;
+                    const isOpen = isProjects
+                      ? mobileProjectsOpen
+                      : isServices
+                      ? mobileServicesOpen
+                      : mobileTeamOpen;
 
-                const toggleOpen = isProjects
-                  ? () => setMobileProjectsOpen((prev) => !prev)
-                  : isServices
-                  ? () => setMobileServicesOpen((prev) => !prev)
-                  : () => setMobileTeamOpen((prev) => !prev);
+                    const toggleOpen = isProjects
+                      ? () => setMobileProjectsOpen((prev) => !prev)
+                      : isServices
+                      ? () => setMobileServicesOpen((prev) => !prev)
+                      : () => setMobileTeamOpen((prev) => !prev);
 
-                return (
-                  <li key={link.href} className="space-y-1">
-                    <div className="flex items-center justify-between px-4 py-3.5 text-base font-bold rounded-xl transition-all duration-200 text-slate-200 hover:bg-white/10">
-                      <Link href={link.href} onClick={() => setMobileOpen(false)}>
-                        <span>{link.label}</span>
-                      </Link>
-                      <button
-                        type="button"
-                        onClick={toggleOpen}
-                        className="p-1 rounded-md hover:bg-white/20 text-slate-300"
-                        aria-label={`Toggle ${link.label} subcategories`}
+                    return (
+                      <motion.li 
+                        key={link.href}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.3, delay: index * 0.05 }}
+                        className="w-full flex flex-col items-center"
                       >
-                        <ChevronDownIcon
-                          className={cn(
-                            "w-5 h-5 transition-transform duration-200",
-                            isOpen ? "rotate-180 text-[#0052cc]" : ""
+                        <div className="flex items-center">
+                          {/* Invisible spacer to balance the flex container and center the text perfectly */}
+                          <div className="w-10 opacity-0 pointer-events-none" aria-hidden="true" />
+                          
+                          <Link 
+                            href={link.href} 
+                            onClick={() => setMobileOpen(false)}
+                            className={cn(
+                              "text-3xl sm:text-4xl font-medium transition-colors duration-300 px-2",
+                              isActive ? "text-white font-extrabold" : "text-blue-100 hover:text-white"
+                            )}
+                          >
+                            {link.label}
+                          </Link>
+                          
+                          <button
+                            type="button"
+                            onClick={toggleOpen}
+                            className="w-10 p-1 text-blue-200 hover:text-white flex justify-center items-center"
+                            aria-label={`Toggle ${link.label} subcategories`}
+                          >
+                            <ChevronDownIcon
+                              className={cn(
+                                "w-6 h-6 transition-transform duration-300",
+                                isOpen ? "rotate-180 text-white" : ""
+                              )}
+                            />
+                          </button>
+                        </div>
+
+                        {/* Centered Accordion Subcategories */}
+                        <AnimatePresence>
+                          {isOpen && (
+                            <motion.div 
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="flex flex-col items-center overflow-hidden w-full mt-4"
+                            >
+                              {isProjects && (
+                                <div className="flex flex-col items-center space-y-6 w-full pb-2">
+                                  <div className="flex flex-col items-center space-y-3">
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-blue-300/80 mb-1">Commercial Plazas</p>
+                                    <Link href="/projects/ansa-tower" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Ansa Tower — Shahalmi</Link>
+                                    <Link href="/services/commercial-plaza-construction" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Shahalmi Commercial Shops</Link>
+                                  </div>
+                                  <div className="flex flex-col items-center space-y-3">
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-blue-300/80 mb-1">Residential Houses</p>
+                                    <Link href="/projects/residential-houses-pakistani-town-phase-1" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Pakistani Town P1 & P2</Link>
+                                    <Link href="/projects/residential-houses-police-foundation-society" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Police Foundation Society</Link>
+                                    <Link href="/projects/residential-houses-bahria-town-phase-7" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Bahria Town Phase 7 Villas</Link>
+                                  </div>
+                                  <Link href="/projects" onClick={() => setMobileOpen(false)} className="text-xs font-bold text-amber-300 hover:text-amber-200 mt-2">All Projects Directory →</Link>
+                                </div>
+                              )}
+                              
+                              {isServices && (
+                                <div className="flex flex-col items-center space-y-6 w-full pb-2">
+                                  <div className="flex flex-col items-center space-y-3">
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-blue-300/80 mb-1">Commercial</p>
+                                    <Link href="/services/commercial-plaza-construction" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Commercial Plaza & Shop Sales</Link>
+                                    <Link href="/services/commercial-development" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Commercial Development</Link>
+                                  </div>
+                                  <div className="flex flex-col items-center space-y-3">
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-blue-300/80 mb-1">Residential & Turnkey</p>
+                                    <Link href="/services/residential-house-construction" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Residential House Construction</Link>
+                                    <Link href="/services/turnkey-solutions" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Turnkey Solutions</Link>
+                                  </div>
+                                </div>
+                              )}
+
+                              {isTeam && (
+                                <div className="flex flex-col items-center space-y-6 w-full pb-2">
+                                  <div className="flex flex-col items-center space-y-3">
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-blue-300/80 mb-1">Executive Leadership</p>
+                                    <Link href="/team/faryad-hussain" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Faryad Hussain (CEO)</Link>
+                                    <Link href="/team/muhammad-fayaz" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Muhammad Fayaz (COO)</Link>
+                                    <Link href="/team/rameez-faryad" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Rameez Faryad (Deputy COO)</Link>
+                                  </div>
+                                  <div className="flex flex-col items-center space-y-3">
+                                    <p className="text-[10px] font-bold uppercase tracking-widest text-blue-300/80 mb-1">Operations</p>
+                                    <Link href="/team/muhammad-arash" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Muhammad Arash (Engineer)</Link>
+                                    <Link href="/team/asad-ali" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Asad Ali (Accounts)</Link>
+                                    <Link href="/team/asghar-ali" onClick={() => setMobileOpen(false)} className="text-sm text-blue-100 hover:text-white">Asghar Ali & Malik Shafique</Link>
+                                  </div>
+                                </div>
+                              )}
+                            </motion.div>
                           )}
-                        />
-                      </button>
-                    </div>
+                        </AnimatePresence>
+                      </motion.li>
+                    );
+                  }
 
-                    {/* Mobile Accordion Subcategories for Projects */}
-                    {isProjects && isOpen && (
-                      <div className="pl-4 pr-2 py-2 space-y-3 border-l-2 border-[#0052cc]/50 my-1 bg-white/5 rounded-r-xl">
-                        <div>
-                          <p className="text-[11px] font-bold uppercase tracking-wider text-[#0052cc] mb-1">
-                            Commercial Plazas
-                          </p>
-                          <Link
-                            href="/projects/ansa-tower"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Ansa Tower — Shahalmi, Lahore
-                          </Link>
-                          <Link
-                            href="/services/commercial-plaza-construction"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Shahalmi Commercial Shops (3-Yr Plan)
-                          </Link>
-                        </div>
-                        <div>
-                          <p className="text-[11px] font-bold uppercase tracking-wider text-[#0052cc] mb-1">
-                            Residential Houses
-                          </p>
-                          <Link
-                            href="/projects/residential-houses-pakistani-town-phase-1"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Pakistani Town P1 & P2 (Islamabad)
-                          </Link>
-                          <Link
-                            href="/projects/residential-houses-police-foundation-society"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Police Foundation Society
-                          </Link>
-                          <Link
-                            href="/projects/residential-houses-bahria-town-phase-7"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Bahria Town Phase 7 Luxury Villas
-                          </Link>
-                        </div>
-                        <div>
-                          <p className="text-[11px] font-bold uppercase tracking-wider text-[#0052cc] mb-1">
-                            Browse All
-                          </p>
-                          <Link
-                            href="/projects?status=ongoing"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-amber-300 font-semibold"
-                          >
-                            • Ongoing Projects
-                          </Link>
-                          <Link
-                            href="/projects?status=completed"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-emerald-300 font-semibold"
-                          >
-                            • Completed Projects
-                          </Link>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Mobile Accordion Subcategories for Services */}
-                    {isServices && isOpen && (
-                      <div className="pl-4 pr-2 py-2 space-y-3 border-l-2 border-[#0052cc]/50 my-1 bg-white/5 rounded-r-xl">
-                        <div>
-                          <p className="text-[11px] font-bold uppercase tracking-wider text-[#0052cc] mb-1">
-                            Commercial
-                          </p>
-                          <Link
-                            href="/services/commercial-plaza-construction"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Commercial Plaza & Shop Sales
-                          </Link>
-                          <Link
-                            href="/services/commercial-development"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Commercial Development
-                          </Link>
-                        </div>
-                        <div>
-                          <p className="text-[11px] font-bold uppercase tracking-wider text-[#0052cc] mb-1">
-                            Residential & Turnkey
-                          </p>
-                          <Link
-                            href="/services/residential-house-construction"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Residential House Construction
-                          </Link>
-                          <Link
-                            href="/services/turnkey-solutions"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Turnkey Solutions
-                          </Link>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Mobile Accordion Subcategories for Team */}
-                    {isTeam && isOpen && (
-                      <div className="pl-4 pr-2 py-2 space-y-3 border-l-2 border-[#0052cc]/50 my-1 bg-white/5 rounded-r-xl">
-                        <div>
-                          <p className="text-[11px] font-bold uppercase tracking-wider text-[#0052cc] mb-1">
-                            Executive Leadership
-                          </p>
-                          <Link
-                            href="/team/faryad-hussain"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Faryad Hussain (CEO & Founder)
-                          </Link>
-                          <Link
-                            href="/team/muhammad-fayaz"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Muhammad Fayaz (COO)
-                          </Link>
-                          <Link
-                            href="/team/rameez-faryad"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Rameez Faryad (Deputy COO)
-                          </Link>
-                        </div>
-                        <div>
-                          <p className="text-[11px] font-bold uppercase tracking-wider text-[#0052cc] mb-1">
-                            Operations & Engineering
-                          </p>
-                          <Link
-                            href="/team/muhammad-arash"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Muhammad Arash (Site Engineer)
-                          </Link>
-                          <Link
-                            href="/team/asad-ali"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Asad Ali (Accounts & Admin)
-                          </Link>
-                          <Link
-                            href="/team/asghar-ali"
-                            onClick={() => setMobileOpen(false)}
-                            className="block py-1 text-xs text-white font-medium hover:text-[#0052cc]"
-                          >
-                            • Asghar Ali & Malik Shafique (Sales)
-                          </Link>
-                        </div>
-                      </div>
-                    )}
-                  </li>
-                );
-              }
-
-              return (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    aria-current={isActive ? "page" : undefined}
-                    className={cn(
-                      "flex items-center justify-between px-4 py-3.5 text-base font-bold rounded-xl transition-all duration-200",
-                      isActive
-                        ? "bg-white text-[#1a2b4a] shadow-lg"
-                        : "text-slate-200 hover:bg-white/10 hover:text-white"
-                    )}
-                  >
-                    <span>{link.label}</span>
-                    {isActive && (
-                      <span className="w-2 h-2 rounded-full bg-[#1a2b4a]" />
-                    )}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-
-        {/* Mobile Contact Info */}
-        <div className="px-6 py-4 border-t border-white/10 bg-slate-950/40 text-center">
-          <p className="text-xs text-slate-400 font-sans">
-            {SITE_CONTACT.companyName} — Commercial Plazas & Residential Excellence
-          </p>
-        </div>
-      </div>
+                  return (
+                    <motion.li 
+                      key={link.href}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                      className="w-full text-center"
+                    >
+                      <Link
+                        href={link.href}
+                        onClick={() => setMobileOpen(false)}
+                        aria-current={isActive ? "page" : undefined}
+                        className={cn(
+                          "block text-3xl sm:text-4xl font-medium transition-colors duration-300",
+                          isActive
+                            ? "text-white font-extrabold"
+                            : "text-blue-100 hover:text-white"
+                        )}
+                      >
+                        {link.label}
+                      </Link>
+                    </motion.li>
+                  );
+                })}
+              </ul>
+              </div>
+            </nav>
+            
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="px-6 py-6 border-t border-white/10 text-center mt-auto"
+            >
+              <p className="text-xs text-blue-200 font-sans tracking-wide">
+                {SITE_CONTACT.companyName}
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

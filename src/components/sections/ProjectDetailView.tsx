@@ -68,57 +68,57 @@ export function ProjectDetailView({ slug }: ProjectDetailViewProps) {
           aria-hidden="true"
         />
 
-        <div className="w-full relative z-10 py-12 sm:py-16 lg:py-20" style={{ paddingLeft: '3rem', paddingRight: '2rem' }}>
-          <div className="max-w-3xl">
+        <div className="w-full relative z-10 py-10 sm:py-16 lg:py-20 p-5 sm:p-8 md:p-12 lg:p-[4.5rem]">
+          <div className="w-[85%] sm:w-[65%] md:w-full max-w-3xl">
             {/* Breadcrumb Navigation */}
-            <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
-              <ol className="flex items-center gap-2 text-xs font-sans text-slate-500 font-medium">
+            <nav aria-label="Breadcrumb" className="mb-3 sm:mb-6">
+              <ol className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs md:text-sm font-sans text-slate-500 font-medium">
                 <li><a href="/" className="hover:text-[#0052cc] transition-colors">Home</a></li>
                 <li aria-hidden="true">/</li>
                 <li><a href="/projects" className="hover:text-[#0052cc] transition-colors">Projects</a></li>
                 <li aria-hidden="true">/</li>
-                <li aria-current="page" className="text-[#1a2b4a] font-semibold">{project.name}</li>
+                <li aria-current="page" className="text-[#1a2b4a] font-semibold truncate max-w-[120px] sm:max-w-none">{project.name}</li>
               </ol>
             </nav>
 
             {/* Eyebrow / Tagline */}
-            <p className="text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6 font-sans text-[#0052cc]">
+            <p className="text-[9px] sm:text-xs font-bold tracking-widest uppercase mb-3 sm:mb-6 font-sans text-[#0052cc]">
               {project.status === "ongoing" ? "In Progress / Ongoing" : "Completed Project"}
               {" • "}
               {project.type.map((t) => (t === "residential" ? "Residential" : t === "commercial" ? "Commercial" : t)).join(" & ")} Development
             </p>
 
             {/* Project Title */}
-            <h1 className="font-figtree font-bold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-4">
+            <h1 className="font-figtree font-bold text-[#1a2b4a] text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-3 sm:mb-4">
               {project.name}
             </h1>
 
             {/* Location Badge */}
-            <p className="flex items-center gap-2 text-sm md:text-base text-slate-600 font-sans font-semibold mb-6">
-              <MapPinIcon className="w-5 h-5 text-[#0052cc] shrink-0" />
-              {project.locationName}, {project.city} ({project.region})
+            <p className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-sm md:text-base text-slate-600 font-sans font-semibold mb-4 sm:mb-6">
+              <MapPinIcon className="w-4 h-4 sm:w-5 sm:h-5 text-[#0052cc] shrink-0" />
+              {project.locationName}, {project.city} <span className="hidden sm:inline">({project.region})</span>
             </p>
 
             {/* Short Narrative */}
-            <p className="text-sm sm:text-base leading-relaxed mb-8 sm:mb-10 max-w-xl font-sans text-slate-600">
+            <p className="text-[11px] sm:text-sm md:text-base leading-relaxed mb-6 sm:mb-10 max-w-xl font-sans text-slate-600">
               {project.shortDescription}
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-[95%] sm:w-auto">
               <a
                 href="#enquiry"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 text-sm font-bold rounded-xl group btn-hero-primary"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-8 py-2.5 sm:py-4 text-[11px] sm:text-sm font-bold rounded-xl group btn-hero-primary"
               >
                 Register Interest
-                <ArrowRightIcon className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                <ArrowRightIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-200 group-hover:translate-x-1" />
               </a>
               <button
                 onClick={() => setLightboxIndex(0)}
                 style={{ borderColor: '#0052cc', color: '#0052cc' }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 text-sm font-semibold rounded-xl group border-2 bg-transparent hover:bg-[#0052cc] hover:!text-white transition-colors"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-8 py-2.5 sm:py-4 text-[11px] sm:text-sm font-semibold rounded-xl group border-2 bg-transparent hover:bg-[#0052cc] hover:!text-white transition-colors"
               >
-                <MagnifyingGlassPlusIcon className="w-4 h-4" />
+                <MagnifyingGlassPlusIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Inspect High-Res Photos
               </button>
             </div>
@@ -129,15 +129,15 @@ export function ProjectDetailView({ slug }: ProjectDetailViewProps) {
 
       {/* ─── 2. KEY FACTS CONTAINER (LUXURY WHITE CARD WITH BLUE ACCENT) ───── */}
       {project.keyFacts.length > 0 && (
-        <section className="container-site -mt-10 relative z-20 mb-12">
-          <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-6 md:p-8">
-            <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+        <section className="container-site -mt-10 relative z-20 mb-12 w-[90%] sm:w-full mx-auto">
+          <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-4 sm:p-6 md:p-8">
+            <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-6">
               {project.keyFacts.slice(0, 6).map((fact) => (
-                <div key={fact.label} className="flex flex-col">
-                  <dt className="text-xs uppercase tracking-widest font-mono text-[#0052cc] font-bold mb-1">
+                <div key={fact.label} className="flex flex-col text-center">
+                  <dt className="text-[9px] sm:text-xs uppercase tracking-widest font-mono text-[#0052cc] font-bold mb-0.5 sm:mb-1">
                     {fact.label}
                   </dt>
-                  <dd className="font-sans font-extrabold text-base md:text-lg text-[var(--color-text-primary)]">
+                  <dd className="font-figtree font-extrabold text-[11px] sm:text-base md:text-lg text-[var(--color-text-primary)]">
                     {fact.value}
                   </dd>
                 </div>

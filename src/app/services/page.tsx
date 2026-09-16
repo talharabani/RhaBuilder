@@ -84,21 +84,25 @@ export default function ServicesPage() {
             style={{ background: 'linear-gradient(to right, #ffffff 0%, #ffffff 25%, rgba(255,255,255,0.92) 45%, rgba(255,255,255,0) 70%)' }}
             aria-hidden="true"
           />
-          <div className="w-full relative z-10 py-12 sm:py-16 lg:py-20 p-8 md:p-12 lg:p-[4.5rem]">
-            <div className="max-w-3xl">
+          <div className="w-full relative z-10 py-10 sm:py-16 lg:py-20 p-5 sm:p-8 md:p-12 lg:p-[4.5rem]">
+            <div className="w-[45%] sm:w-[65%] md:w-full max-w-3xl">
               {/* Breadcrumb */}
-              <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
-                <ol className="flex items-center gap-2 text-sm sm:text-base font-sans text-slate-500 font-medium">
+              <nav aria-label="Breadcrumb" className="mb-3 sm:mb-6">
+                <ol className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-base font-sans text-slate-500 font-medium">
                   <li><a href="/" className="hover:text-[#0052cc] transition-colors">Home</a></li>
                   <li aria-hidden="true">/</li>
                   <li aria-current="page" className="text-[#1a2b4a] font-bold">Services</li>
                 </ol>
               </nav>
-              <h1 className="font-figtree font-bold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-5">
+              <h1 className="font-figtree font-bold text-[#1a2b4a] text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-3 sm:mb-5">
                 Our Services
               </h1>
-              <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed max-w-2xl">
-                Development and construction services across residential and commercial sectors.
+              <p className="mt-2 sm:mt-4 text-[10px] sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed w-[95%] sm:w-full max-w-2xl">
+                <span className="block sm:inline">Development and construction</span>
+                <span className="hidden sm:inline"> </span>
+                <span className="block sm:inline">services across residential</span>
+                <span className="hidden sm:inline"> </span>
+                <span className="block sm:inline">and commercial sectors.</span>
               </p>
             </div>
           </div>

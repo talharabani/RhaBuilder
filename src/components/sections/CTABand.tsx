@@ -45,8 +45,18 @@ export function CTABand({
       )}
 
       <div className="container-site relative py-8 sm:py-10">
+        <style dangerouslySetInnerHTML={{__html: `
+          .cta-text-align {
+            text-align: center;
+          }
+          @media (min-width: 768px) {
+            .cta-text-align {
+              text-align: left !important;
+            }
+          }
+        `}} />
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl cta-text-align">
             <h2
               className={cn(
                 "font-sans font-extrabold text-3xl md:text-4xl tracking-tight leading-[1.1]",
@@ -76,7 +86,7 @@ export function CTABand({
             )}
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 shrink-0">
+          <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
             <style dangerouslySetInnerHTML={{__html: `
               .cta-btn-3d-light {
                 box-shadow: 0 6px 0 #cbd5e1;

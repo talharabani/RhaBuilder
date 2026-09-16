@@ -44,10 +44,10 @@ export default function ContactPage() {
             }}
             aria-hidden="true"
           />
-          <div className="w-full relative z-10 py-12 sm:py-16 lg:py-20 p-8 md:p-12 lg:p-[4.5rem]">
-            <div className="max-w-3xl">
-              <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
-                <ol className="flex items-center gap-2 text-sm sm:text-base font-sans text-slate-500 font-medium">
+          <div className="w-full relative z-10 py-10 sm:py-16 lg:py-20 p-5 sm:p-8 md:p-12 lg:p-[4.5rem]">
+            <div className="w-[45%] sm:w-[65%] md:w-full max-w-3xl">
+              <nav aria-label="Breadcrumb" className="mb-3 sm:mb-6">
+                <ol className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-base font-sans text-slate-500 font-medium">
                   <li>
                     <a href="/" className="hover:text-[#0052cc] transition-colors">
                       Home
@@ -59,11 +59,15 @@ export default function ContactPage() {
                   </li>
                 </ol>
               </nav>
-              <h1 className="font-figtree font-bold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-5">
+              <h1 className="font-figtree font-bold text-[#1a2b4a] text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-3 sm:mb-5">
                 Contact Us
               </h1>
-              <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed max-w-2xl">
-                Get in touch with RHA Builder corporate office and project consultation team.
+              <p className="mt-2 sm:mt-4 text-[10px] sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed w-[95%] sm:w-full max-w-2xl">
+                <span className="block sm:inline">Get in touch with RHA Builder</span>
+                <span className="hidden sm:inline"> </span>
+                <span className="block sm:inline">corporate office and project</span>
+                <span className="hidden sm:inline"> </span>
+                <span className="block sm:inline">consultation team.</span>
               </p>
             </div>
           </div>

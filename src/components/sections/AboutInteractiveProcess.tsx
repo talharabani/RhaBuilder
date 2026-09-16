@@ -97,20 +97,20 @@ export function AboutInteractiveProcess() {
   return (
     <div className="w-full p-8 md:p-12 lg:p-[4.5rem]" style={{ backgroundColor: '#e6f0fa', borderRadius: '2.5rem' }}>
       {/* Step Navigation Tabs */}
-      <div className="flex flex-wrap gap-2 sm:gap-3 mb-10 md:mb-14 border-b border-[#0052cc]/10 pb-4">
+      <div className="flex flex-nowrap sm:flex-wrap overflow-x-auto sm:overflow-x-visible gap-2 sm:gap-3 mb-10 md:mb-14 border-b border-[#0052cc]/10 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         {PROCESS_STEPS.map((step) => {
           const isActive = step.id === activeStepId;
           return (
             <button
               key={step.id}
               onClick={() => setActiveStepId(step.id)}
-              className={`px-5 py-2.5 rounded-full transition-all duration-300 relative ${
+              className={`shrink-0 whitespace-nowrap px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-full transition-all duration-300 relative ${
                 isActive
                   ? "bg-white text-[#0052cc] font-bold shadow-sm border border-[#0052cc]/10 scale-105"
                   : "bg-transparent text-slate-500 font-medium hover:bg-white/50 hover:text-slate-800"
               }`}
             >
-              <span className="font-sans text-sm sm:text-base">{step.title}</span>
+              <span className="font-sans text-[10px] sm:text-base">{step.title}</span>
             </button>
           );
         })}

@@ -69,10 +69,10 @@ export default async function TeamMemberDetailPage({ params }: PageProps) {
             }}
             aria-hidden="true"
           />
-          <div className="w-full relative z-10 py-12 sm:py-16 lg:py-20 p-8 md:p-12 lg:p-[4.5rem]">
-            <div className="max-w-2xl">
-              <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
-                <ol className="flex items-center gap-2 text-sm sm:text-base font-sans text-slate-500 font-medium">
+          <div className="w-full relative z-10 py-10 sm:py-16 lg:py-20 p-5 sm:p-8 md:p-12 lg:p-[4.5rem]">
+            <div className="w-[45%] sm:w-[65%] md:w-full max-w-2xl">
+              <nav aria-label="Breadcrumb" className="mb-3 sm:mb-6">
+                <ol className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-base font-sans text-slate-500 font-medium">
                   <li>
                     <Link href="/" className="hover:text-[#0052cc] transition-colors">
                       Home
@@ -90,11 +90,15 @@ export default async function TeamMemberDetailPage({ params }: PageProps) {
                   </li>
                 </ol>
               </nav>
-              <h1 className="font-figtree font-bold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-5">
+              <h1 className="font-figtree font-bold text-[#1a2b4a] text-2xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-3 sm:mb-5">
                 Team Leadership &amp; Experts
               </h1>
-              <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed max-w-xl">
-                Discover the background, role scope, and professional experience driving RHA Builders.
+              <p className="mt-2 sm:mt-4 text-[10px] sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed w-[95%] sm:w-full max-w-xl">
+                <span className="block sm:inline">Discover the background,</span>
+                <span className="hidden sm:inline"> </span>
+                <span className="block sm:inline">role scope, and professional</span>
+                <span className="hidden sm:inline"> </span>
+                <span className="block sm:inline">experience driving RHA Builders.</span>
               </p>
             </div>
           </div>
@@ -107,7 +111,7 @@ export default async function TeamMemberDetailPage({ params }: PageProps) {
           <div className="relative z-20">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
               {/* Left Column: Portrait */}
-              <div className="lg:col-span-4 relative">
+              <div className="lg:col-span-4 relative w-[65%] mx-auto lg:w-full">
                 <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-slate-950 border border-slate-700/60 shadow-xl">
                   {member.portrait && !member.portrait.includes("placeholder") ? (
                     <Image

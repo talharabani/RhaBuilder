@@ -28,7 +28,7 @@ export function TeamClient({ teamMembers }: TeamClientProps) {
             alt="RHA Builders Team"
             fill
             priority
-            className="object-cover object-[center_top] lg:object-[right_top] drop-shadow-[0_25px_40px_rgba(0,0,0,0.18)]"
+            className="object-cover object-[center_top] lg:object-[center_top] drop-shadow-[0_25px_40px_rgba(0,0,0,0.18)]"
           />
           <div
             className="absolute inset-0 pointer-events-none"
@@ -56,9 +56,6 @@ export function TeamClient({ teamMembers }: TeamClientProps) {
               <h1 className="font-figtree font-bold text-[#1a2b4a] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-5">
                 Our Team
               </h1>
-              <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-600 font-sans leading-relaxed max-w-2xl">
-                The executive leadership, sales, engineering, and administrative professionals driving RHA Builders.
-              </p>
             </div>
           </div>
         </section>
@@ -159,45 +156,83 @@ export function TeamClient({ teamMembers }: TeamClientProps) {
             </h2>
           </div>
 
-          {/* Fan Arc Layout */}
           <style>{`
-            .fan-arc-container .fan-card {
-              transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease, filter 0.4s ease;
+            .mobile-grid-view { display: grid; }
+            .desktop-fan-arc { display: none; }
+            @media (min-width: 768px) {
+              .mobile-grid-view { display: none !important; }
+              .desktop-fan-arc { display: flex !important; }
             }
-            .fan-arc-container:hover .fan-card {
-              opacity: 0.5;
-              filter: blur(1px) grayscale(0.3);
-              transform: scale(0.92) !important;
-            }
-            .fan-arc-container .fan-card:hover {
-              opacity: 1 !important;
-              filter: none !important;
-              transform: scale(1.15) rotateY(0deg) translateZ(60px) !important;
+            .desktop-fan-arc .fan-card:hover {
+              transform: scale(1.15) rotateY(0deg) translateZ(30px) !important;
               z-index: 50 !important;
             }
           `}</style>
-          <div className="fan-arc-container relative w-full flex items-end justify-center gap-2 sm:gap-3 md:gap-4 py-8" style={{ perspective: '1200px' }}>
+
+          {/* Mobile View: 2-Column Grid */}
+          <div className="w-full grid-cols-2 gap-4 py-8 mobile-grid-view">
+            {executives.map((member) => (
+              <Link
+                key={`mobile-${member.slug}`}
+                href={`/team/${member.slug}`}
+                className="group relative flex flex-col"
+              >
+                <div
+                  className="relative overflow-hidden bg-white border-2 border-slate-200 shadow-sm"
+                  style={{ borderRadius: '1rem', aspectRatio: '3/4' }}
+                >
+                  {member.portrait && !member.portrait.includes("placeholder") ? (
+                    <Image
+                      src={member.portrait}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="50vw"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-slate-100">
+                      <span className="text-xl font-bold text-[#1a2b4a]">
+                        {member.name.split(" ").map((n) => n[0]).join("").slice(0, 2)}
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <div className="mt-2 text-center">
+                  <p className="text-[11px] sm:text-xs font-bold text-[#0b1b3d] font-sans truncate leading-tight">
+                    {member.name}
+                  </p>
+                  <p className="text-[9px] sm:text-[10px] text-[#0052cc] font-sans truncate leading-tight mt-0.5">
+                    {member.jobTitle}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Desktop View: 3D Flex Row */}
+          <div className="fan-arc-container relative w-full items-end justify-center gap-4 sm:gap-5 md:gap-6 lg:gap-8 py-8 desktop-fan-arc" style={{ perspective: '1200px' }}>
             {executives.map((member, index) => {
               const total = executives.length;
               const mid = (total - 1) / 2;
               const offset = index - mid;
-              const rotateY = offset * 8;
-              const translateZ = -Math.abs(offset) * 30;
-              const scale = 1 - Math.abs(offset) * 0.04;
+              const rotateY = offset * 5;
+              const translateZ = -Math.abs(offset) * 20;
+              const scale = 1 - Math.abs(offset) * 0.03;
 
               return (
                 <Link
-                  key={member.slug}
+                  key={`desktop-${member.slug}`}
                   href={`/team/${member.slug}`}
                   className="fan-card group relative flex-shrink-0"
                   style={{
                     transform: `rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`,
                     zIndex: total - Math.abs(offset) * 2,
-                    width: 'clamp(110px, 16vw, 230px)',
+                    width: 'clamp(100px, 12vw, 175px)', // Reduced width to fit 7 cards easily
+                    transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease, filter 0.4s ease'
                   }}
                   aria-label={`View profile for ${member.name}, ${member.jobTitle}`}
                 >
-                  {/* Card */}
+                  {/* Card Container */}
                   <div
                     className="relative overflow-hidden bg-white border-2 border-slate-200 group-hover:border-[#0052cc] shadow-md group-hover:shadow-[0_20px_60px_-10px_rgba(0,82,204,0.4)] transition-all duration-500"
                     style={{ borderRadius: '1.25rem', aspectRatio: '3/4' }}
@@ -209,33 +244,23 @@ export function TeamClient({ teamMembers }: TeamClientProps) {
                         alt={member.name}
                         fill
                         className="object-cover object-top group-hover:scale-110 transition-transform duration-700"
-                        sizes="280px"
+                        sizes="(max-width: 1024px) 15vw, 175px"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-b from-slate-100 to-slate-200">
+                      <div className="w-full h-full flex items-center justify-center bg-slate-50">
                         <span className="text-2xl font-bold text-[#1a2b4a]">
                           {member.name.split(" ").map((n) => n[0]).join("").slice(0, 2)}
                         </span>
                       </div>
                     )}
-
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0b1b3d]/90 via-[#0b1b3d]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col items-center justify-end p-4">
-                      <span className="text-white text-xs sm:text-sm font-bold font-sans text-center leading-tight mb-1">
-                        {member.name}
-                      </span>
-                      <span className="text-white text-[10px] sm:text-xs font-sans text-center leading-tight">
-                        {member.jobTitle}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Name Label below card */}
-                  <div className="mt-3 text-center transition-opacity">
-                    <p className="text-xs sm:text-sm font-bold text-[#0b1b3d] font-sans truncate leading-tight">
+                  <div className="mt-3 text-center">
+                    <p className="text-[11px] sm:text-xs font-bold text-[#0b1b3d] font-sans truncate leading-tight">
                       {member.name}
                     </p>
-                    <p className="text-[10px] sm:text-xs text-[#0052cc] font-sans truncate leading-tight mt-0.5">
+                    <p className="text-[9px] sm:text-[10px] text-[#0052cc] font-sans truncate leading-tight mt-0.5">
                       {member.jobTitle}
                     </p>
                   </div>

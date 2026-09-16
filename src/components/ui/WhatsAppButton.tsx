@@ -11,7 +11,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Need Assistance? Message us on WhatsApp"
-      className="group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center bg-[#0f2b5c] hover:bg-[#0b2046] text-white rounded-full p-2 sm:p-2.5 shadow-2xl border border-blue-400/30 transition-all duration-500 ease-in-out hover:pl-5 hover:pr-2.5"
+      className="group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center bg-[#0052cc] hover:bg-[#003d99] text-white rounded-full p-2 sm:p-2.5 shadow-2xl border border-blue-400/30 transition-all duration-500 ease-in-out hover:pl-5 hover:pr-2.5"
     >
       {/* Expanded Left Content (Hidden by default, shown smoothly on hover) */}
       <div className="flex items-center gap-3 max-w-0 opacity-0 overflow-hidden group-hover:max-w-[260px] group-hover:opacity-100 transition-all duration-500 ease-in-out">
