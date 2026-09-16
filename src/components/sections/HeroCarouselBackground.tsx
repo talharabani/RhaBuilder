@@ -42,6 +42,22 @@ export function HeroCarouselBackground() {
           quality={95}
         />
       ))}
+      
+      {/* White fade at the bottom (Mobile Only) */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .hero-mobile-fade { display: block; }
+        @media (min-width: 768px) {
+          .hero-mobile-fade { display: none !important; }
+        }
+      `}} />
+      <div 
+        className="absolute inset-x-0 bottom-0 pointer-events-none z-10 hero-mobile-fade" 
+        style={{
+          height: '180px',
+          background: 'linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%)'
+        }}
+        aria-hidden="true" 
+      />
     </div>
   );
 }

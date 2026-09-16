@@ -72,12 +72,13 @@ export function ThreeDProjectsGallery() {
 
   // Auto-slide every 5 seconds if not paused
   useEffect(() => {
-    if (!isAutoPlay || totalProjects <= 1) return;
+    // Disable auto-play on mobile entirely
+    if (!isAutoPlay || totalProjects <= 1 || isMobile) return;
     const timer = setInterval(() => {
       handleNext();
     }, 5000);
     return () => clearInterval(timer);
-  }, [isAutoPlay, activeIndex, totalProjects]);
+  }, [isAutoPlay, activeIndex, totalProjects, isMobile]);
 
   const activeProject = displayProjects[activeIndex] || displayProjects[0] || projects[0];
 
@@ -109,7 +110,7 @@ export function ThreeDProjectsGallery() {
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-end">
               <div className="flex flex-wrap items-center gap-3">
                 {/* Type Filter Pills */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-nowrap sm:flex-wrap gap-2">
                   {TYPE_FILTERS.map((f) => {
                     const isActive = selectedType === f.value;
                     return (
