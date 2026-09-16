@@ -7,6 +7,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/Button";
 import { CheckCircleIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const schema = z.object({
   fullName: z.string().min(2, "Please enter your full name"),
@@ -109,37 +110,79 @@ export function LeadForm({
 
   if (submitted) {
     return (
-      <div
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
-          "rounded-[var(--radius-card)] p-10 text-center",
-          isDark ? "bg-[var(--color-brand-primary)]" : "bg-[var(--color-surface-secondary)]"
+          "rounded-[var(--radius-card)] p-10 text-center flex flex-col items-center justify-center min-h-[400px]",
+          isDark ? "bg-[var(--color-brand-primary)]" : "bg-gradient-to-b from-blue-50/50 to-white border border-[#0052cc]/10 shadow-[0_8px_30px_rgba(0,82,204,0.06)]"
         )}
         role="status"
         aria-live="polite"
       >
-        <CheckCircleIcon
-          className="w-14 h-14 mx-auto mb-4"
-          style={{ color: "var(--color-success)" }}
-          aria-hidden="true"
-        />
-        <h3
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+            delay: 0.1,
+          }}
+          className="w-20 h-20 rounded-full flex items-center justify-center mb-6 relative"
+          style={{ backgroundColor: "var(--color-brand-primary)", boxShadow: "0 4px 20px rgba(0, 82, 204, 0.3)" }}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-0 rounded-full"
+            style={{ backgroundColor: "var(--color-brand-primary)" }}
+            aria-hidden="true"
+          />
+          <motion.svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-10 h-10 text-white z-10"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={3}
+          >
+            <motion.path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M5 13l4 4L19 7"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            />
+          </motion.svg>
+        </motion.div>
+        
+        <motion.h3
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
           className={cn(
-            "font-display font-semibold text-2xl mb-2",
-            isDark ? "text-white" : "text-[var(--color-text-primary)]"
+            "font-display font-bold text-3xl mb-3 tracking-tight",
+            isDark ? "text-white" : "text-[#1a2b4a]"
           )}
         >
-          Thank You
-        </h3>
-        <p
+          Thank You!
+        </motion.h3>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
           className={cn(
-            "text-sm leading-relaxed",
-            isDark ? "text-[var(--color-text-on-dark-muted)]" : "text-[var(--color-text-muted)]"
+            "text-base leading-relaxed max-w-md mx-auto",
+            isDark ? "text-[var(--color-text-on-dark-muted)]" : "text-slate-600"
           )}
         >
-          Your enquiry has been received. A member of the RHA Builder team will
-          be in touch with you shortly.
-        </p>
-      </div>
+          Your enquiry has been successfully received. A member of the RHA Builders team will be in touch with you shortly.
+        </motion.p>
+      </motion.div>
     );
   }
 
