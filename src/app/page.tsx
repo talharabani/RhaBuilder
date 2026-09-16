@@ -27,10 +27,10 @@ import { InteractiveHover } from "@/components/animation/InteractiveHover";
 import dynamic from "next/dynamic";
 
 // Dynamically import heavy components to reduce initial JS payload
-const ThreeDProjectsGallery = dynamic(() => import("@/components/sections/ThreeDProjectsGallery").then(mod => mod.ThreeDProjectsGallery), { ssr: false });
+const ThreeDProjectsGallery = dynamic(() => import("@/components/sections/ThreeDProjectsGallery").then(mod => mod.ThreeDProjectsGallery));
 const NetflixServicesShowcase = dynamic(() => import("@/components/sections/NetflixServicesShowcase").then(mod => mod.NetflixServicesShowcase));
 const LeadForm = dynamic(() => import("@/components/sections/LeadForm").then(mod => mod.LeadForm));
-const StatsBar = dynamic(() => import("@/components/ui/AnimatedCounter").then(mod => mod.StatsBar), { ssr: false });
+const StatsBar = dynamic(() => import("@/components/ui/AnimatedCounter").then(mod => mod.StatsBar));
 const CTABand = dynamic(() => import("@/components/sections/CTABand").then(mod => mod.CTABand));
 
 export const metadata: Metadata = {
