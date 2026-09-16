@@ -175,11 +175,12 @@ export function ThreeDProjectsGallery() {
                 const isActive = offset === 0;
 
                 // 3D Transformation Math with Responsive Mobile Support
-                const rotateY = isMobile ? (isActive ? 0 : offset * -12) : offset * -35;
-                const translateX = isMobile ? offset * 20 : offset * 260;
-                const translateZ = isActive ? (isMobile ? 10 : 100) : -Math.abs(offset) * 160;
-                const scale = isActive ? 1 : isMobile ? 0.85 : Math.max(0.75, 1 - Math.abs(offset) * 0.18);
-                const opacity = isActive ? 1 : isMobile ? 0 : Math.max(0.5, 1 - Math.abs(offset) * 0.35);
+                // For mobile: spread cards horizontally off-screen and remove 3D rotation for a clean slide
+                const rotateY = isMobile ? 0 : offset * -35;
+                const translateX = isMobile ? offset * 360 : offset * 260;
+                const translateZ = isActive ? (isMobile ? 0 : 100) : -Math.abs(offset) * 160;
+                const scale = isActive ? 1 : isMobile ? 0.9 : Math.max(0.75, 1 - Math.abs(offset) * 0.18);
+                const opacity = isActive ? 1 : isMobile ? 0.3 : Math.max(0.5, 1 - Math.abs(offset) * 0.35);
                 const zIndex = 20 - Math.abs(offset) * 5;
 
                 return (
