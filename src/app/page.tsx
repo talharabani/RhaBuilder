@@ -89,7 +89,7 @@ export default function HomePage() {
       {/* ─── HERO ──────────────────────────────────────────────── */}
       <div className="px-3 sm:px-6 lg:px-8 py-4 lg:py-6 w-full max-w-[1600px] mx-auto">
         <section
-          className="relative min-h-[50vh] flex items-center overflow-hidden rounded-3xl sm:rounded-[2rem] shadow-2xl w-full"
+          className="relative min-h-[50vh] flex items-center overflow-hidden rounded-3xl sm:rounded-[2rem] shadow-none sm:shadow-2xl w-full"
           style={{ backgroundColor: "var(--color-surface-dark)" }}
           aria-label="Hero"
         >
