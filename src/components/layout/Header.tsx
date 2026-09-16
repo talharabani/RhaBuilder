@@ -137,8 +137,10 @@ export function Header() {
 
   return (
     <>
+      {/* Spacer to preserve document flow since the header is now fixed */}
+      <div className="h-[5.5rem] sm:h-24 w-full" aria-hidden="true" />
       <header
-        className="sticky top-0 z-50 pt-2 sm:pt-3 px-3 sm:px-6 lg:px-8 w-full max-w-[1600px] mx-auto pointer-events-none transition-all duration-300"
+        className="fixed top-0 left-0 right-0 z-50 pt-2 sm:pt-3 px-3 sm:px-6 lg:px-8 w-full max-w-[1600px] mx-auto pointer-events-none transition-all duration-300"
         role="banner"
       >
         <div className="relative w-full">
