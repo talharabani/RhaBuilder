@@ -22,10 +22,10 @@ const footerLinks = {
     { href: "/projects?status=completed", label: "Completed Projects" },
   ],
   services: [
+    { href: "/residential-construction", label: "Residential Construction" },
+    { href: "/commercial-construction", label: "Commercial Construction" },
+    { href: "/renovation", label: "Renovation Services" },
     { href: "/services/real-estate-development", label: "Real Estate Development" },
-    { href: "/services/residential-construction", label: "Residential Construction" },
-    { href: "/services/commercial-development", label: "Commercial Development" },
-    { href: "/services/construction-management", label: "Construction Management" },
     { href: "/services/turnkey-solutions", label: "Turnkey Solutions" },
   ],
   legal: [

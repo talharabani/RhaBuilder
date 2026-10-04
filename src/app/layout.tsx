@@ -47,6 +47,9 @@ export const metadata: Metadata = {
     "residential construction Pakistan",
     "turnkey homes Pakistan",
     "Ansa Tower",
+    "Faryad Hussain",
+    "Hasalmi Market",
+    "Construction Company in Lahore",
   ],
   authors: [{ name: "RHA Builders" }],
   creator: "RHA Builders",
@@ -129,7 +132,12 @@ export default function RootLayout({
                 },
                 areaServed: ["Lahore", "Islamabad", "Pakistan"],
                 description:
-                  "RHA Builders is a premier real estate development and construction company in Pakistan, specializing in commercial plazas and residential properties with flexible installment plans.",
+                  "RHA Builders is a premier construction company in Lahore providing residential construction, commercial construction, renovation, and property development services.",
+                sameAs: [
+                  "https://www.facebook.com/rhabuilders",
+                  "https://www.instagram.com/rhabuilders",
+                  "https://www.linkedin.com/company/rhabuilders"
+                ]
               },
               {
                 "@context": "https://schema.org",

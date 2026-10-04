@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TextReveal } from "@/components/animation/TextReveal";
 
 const HEADINGS = [
+  "Trusted Construction \n Company in Lahore",
   "Your next chapter \n starts here.",
-  "Constructing visions \n into reality.",
-  "Premium development \n for lasting value."
+  "Constructing visions \n into reality."
 ];
 
 export function HeroHeading() {

@@ -34,9 +34,9 @@ const StatsBar = dynamic(() => import("@/components/ui/AnimatedCounter").then(mo
 const CTABand = dynamic(() => import("@/components/sections/CTABand").then(mod => mod.CTABand));
 
 export const metadata: Metadata = {
-  title: "RHA Builders | Residential & Commercial Real Estate Development",
+  title: "RHA Builders Lahore | Construction Company in Lahore, Pakistan",
   description:
-    "Explore RHA Builders' residential and commercial developments, construction capabilities, project updates and opportunities. Speak with our team.",
+    "RHA Builders is a construction company in Lahore providing residential construction, commercial construction, renovation and property development services. Led by Faryad Hussain, located near Hasalmi Market.",
   alternates: { canonical: "https://rhabuilder.com" },
 };
 
