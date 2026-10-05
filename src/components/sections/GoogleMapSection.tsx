@@ -15,17 +15,11 @@ export function GoogleMapSection({
   className = "",
 }: GoogleMapSectionProps) {
   const [zoomLevel, setZoomLevel] = useState<number>(18);
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-
-  // Exact location query focused on Mochi Gate, Ghalib Street #20, Barkat, Lahore
   const locationQuery = encodeURIComponent(
     "Ghalib Street 20, Barkat, Mochi Gate, Lahore, Pakistan"
   );
-
-  // Real Google Maps embed URL with dynamic high zoom level (z=18 street level detail) and pin drop (iwloc=B)
-  const embedUrl = apiKey
-    ? `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${locationQuery}&zoom=${zoomLevel}`
-    : `https://maps.google.com/maps?q=${locationQuery}&t=m&z=${zoomLevel}&ie=UTF8&iwloc=B&output=embed`;
+  // Use the free Google Maps embed URL to avoid API key restriction errors
+  const embedUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${locationQuery}&t=&z=${zoomLevel}&ie=UTF8&iwloc=B&output=embed`;
 
   return (
     <section

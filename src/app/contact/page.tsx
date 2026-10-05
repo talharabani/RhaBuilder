@@ -14,12 +14,8 @@ export default function ContactPage() {
   const encodedAddress = encodeURIComponent(
     "Ghalib Street 20, Barkat, Mochi Gate, Lahore, Pakistan"
   );
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-
-  // Real Google Maps Embed URL matching reference design
-  const mapEmbedUrl = apiKey
-    ? `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodedAddress}&zoom=16`
-    : `https://maps.google.com/maps?q=${encodedAddress}&t=m&z=16&ie=UTF8&iwloc=B&output=embed`;
+  // Use the free Google Maps embed URL to avoid API key restriction errors
+  const mapEmbedUrl = `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=${encodedAddress}&t=&z=16&ie=UTF8&iwloc=B&output=embed`;
 
   return (
     <>
