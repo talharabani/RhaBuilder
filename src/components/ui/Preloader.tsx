@@ -1,15 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Minimum time to ensure the intricate motion graphics can play out
-    const MIN_TIME = 2800; 
+    // Dynamic playback rate: starts slow (0.5x), gets faster over time
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
+
     const startTime = Date.now();
+    
+    // Interval to increase speed over time
+    const speedInterval = setInterval(() => {
+      if (videoRef.current) {
+        const elapsedSeconds = (Date.now() - startTime) / 1000;
+        // Speed up gradually from 0.5x to a maximum of 2.5x over time
+        const newSpeed = Math.min(2.5, 0.5 + elapsedSeconds * 0.6);
+        videoRef.current.playbackRate = newSpeed;
+      }
+    }, 100);
+
+    // Set a minimum display time so the user can enjoy the video
+    const MIN_TIME = 3500; 
 
     const handleLoad = () => {
       const elapsedTime = Date.now() - startTime;
@@ -22,170 +39,45 @@ export function Preloader() {
       handleLoad();
     } else {
       window.addEventListener("load", handleLoad);
-      // Fallback
-      const fallbackTimer = setTimeout(() => setIsLoading(false), MIN_TIME + 2000);
+      // Fallback in case window load never fires
+      const fallbackTimer = setTimeout(() => setIsLoading(false), MIN_TIME + 3000);
       return () => {
         window.removeEventListener("load", handleLoad);
         clearTimeout(fallbackTimer);
+        clearInterval(speedInterval);
       };
     }
+    
+    return () => clearInterval(speedInterval);
   }, []);
-
-  // Motion graphics easing curve (sharp and snappy)
-  const motionEase = [0.87, 0, 0.13, 1];
 
   return (
     <AnimatePresence>
       {isLoading && (
         <motion.div
           key="preloader"
-          initial={{ y: 0 }}
+          initial={{ opacity: 1 }}
           exit={{ 
-            y: "-100%", 
-            borderBottomLeftRadius: "30%", 
-            borderBottomRightRadius: "30%",
-            opacity: 0
+            opacity: 0,
+            scale: 1.05,
+            filter: "blur(8px)"
           }}
-          transition={{ duration: 0.9, ease: motionEase }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#e6f0fa] overflow-hidden"
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#0a1122] overflow-hidden"
         >
-          
-          {/* Subtle Dot Grid Background */}
-          <div className="absolute inset-0 z-0">
-             <motion.div 
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               transition={{ duration: 1 }}
-               className="w-full h-full opacity-[0.05]"
-               style={{
-                 backgroundImage: 'radial-gradient(#1a2b4a 2px, transparent 2px)',
-                 backgroundSize: '40px 40px'
-               }}
-             />
-             {/* Sweeping dynamic light reflection */}
-             <motion.div
-               initial={{ x: "-150%", skewX: -45 }}
-               animate={{ x: "200%" }}
-               transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
-               className="absolute top-0 bottom-0 w-2/3 bg-white/40 blur-2xl z-0"
-             />
-          </div>
+          {/* Subtle Background Glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,82,204,0.15)_0%,transparent_70%)] pointer-events-none" />
 
-          {/* Abstract Motion Graphics Decor */}
-          <motion.div
-            initial={{ scale: 0, rotate: 90 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ duration: 1.2, ease: motionEase, delay: 0.2 }}
-            className="absolute left-[-5%] top-[10%] w-64 h-64 border-[1px] border-[#1a2b4a]/10 rounded-full z-0"
+          {/* The Video Element */}
+          <video
+            ref={videoRef}
+            src="/loader.webm"
+            autoPlay
+            muted
+            playsInline
+            loop
+            className="relative z-10 w-full h-full max-w-2xl max-h-[80vh] object-contain drop-shadow-2xl"
           />
-          <motion.div
-            initial={{ scale: 0, rotate: -90 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ duration: 1.2, ease: motionEase, delay: 0.4 }}
-            className="absolute right-[-10%] bottom-[-10%] w-96 h-96 border-[1px] border-[#c9a96e]/20 rounded-full z-0"
-          />
-
-          <div className="relative z-10 flex flex-col items-center justify-center">
-            
-            {/* Main Typographic Animation */}
-            <div className="flex flex-col items-center">
-               
-               {/* Alternating RHA Reveal */}
-               <div className="flex overflow-hidden px-4 pb-2">
-                 {"RHA".split("").map((char, i) => (
-                   <motion.span
-                     key={i}
-                     initial={{ y: i % 2 === 0 ? "100%" : "-100%", opacity: 0 }}
-                     animate={{ y: "0%", opacity: 1 }}
-                     transition={{ 
-                       duration: 0.8, 
-                       ease: motionEase, 
-                       delay: 0.2 + (i * 0.1) 
-                     }}
-                     className="text-7xl sm:text-8xl md:text-9xl font-display font-black text-[#1a2b4a] uppercase tracking-tighter leading-[0.85] drop-shadow-sm"
-                   >
-                     {char}
-                   </motion.span>
-                 ))}
-               </div>
-               
-               {/* Snappy Connecting Line */}
-               <motion.div
-                 initial={{ scaleX: 0 }}
-                 animate={{ scaleX: 1 }}
-                 transition={{ duration: 0.8, ease: motionEase, delay: 0.7 }}
-                 className="h-[4px] sm:h-[6px] bg-[#c9a96e] my-2 w-[120%] max-w-[400px] origin-center shadow-sm"
-               />
-               
-               {/* Alternating BUILDERS Reveal */}
-               <div className="flex overflow-hidden pt-2">
-                 {"BUILDERS".split("").map((char, i) => (
-                   <motion.span
-                     key={i}
-                     initial={{ y: i % 2 === 0 ? "-100%" : "100%", opacity: 0 }}
-                     animate={{ y: "0%", opacity: 1 }}
-                     transition={{ 
-                       duration: 0.8, 
-                       ease: motionEase, 
-                       delay: 0.5 + (i * 0.05) 
-                     }}
-                     className="text-4xl sm:text-5xl md:text-[4.5rem] font-sans font-extrabold text-[#2d4a7a] uppercase tracking-widest leading-[0.9]"
-                   >
-                     {char}
-                   </motion.span>
-                 ))}
-               </div>
-            </div>
-
-            {/* Staggered Subtitle */}
-            <div className="mt-8 overflow-hidden h-8 flex items-center justify-center">
-               <motion.div
-                 initial="hidden"
-                 animate="visible"
-                 variants={{
-                   hidden: {},
-                   visible: {
-                     transition: { staggerChildren: 0.04, delayChildren: 1.3 }
-                   }
-                 }}
-                 className="flex space-x-[2px]"
-               >
-                 {"CONSTRUCTING EXCELLENCE".split("").map((char, i) => (
-                   <motion.span
-                     key={i}
-                     variants={{
-                       hidden: { y: 20, opacity: 0, rotateX: 90 },
-                       visible: { 
-                         y: 0, 
-                         opacity: 1, 
-                         rotateX: 0,
-                         transition: { duration: 0.5, ease: "easeOut" } 
-                       }
-                     }}
-                     className={`text-[10px] sm:text-xs md:text-sm text-[#1a2b4a] font-bold tracking-[0.3em] ${char === ' ' ? 'w-2 sm:w-4' : ''}`}
-                   >
-                     {char}
-                   </motion.span>
-                 ))}
-               </motion.div>
-            </div>
-            
-            {/* Minimal Loader Progress Indicator */}
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 2.2, ease: "linear", delay: 0.2 }}
-              className="absolute bottom-[-40px] h-[1px] bg-[#1a2b4a]/30"
-            >
-              <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: "100%" }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                className="w-1/3 h-full bg-[#c9a96e]"
-              />
-            </motion.div>
-
-          </div>
         </motion.div>
       )}
     </AnimatePresence>
