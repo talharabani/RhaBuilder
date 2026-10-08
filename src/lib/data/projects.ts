@@ -69,7 +69,7 @@ export const projects: Project[] = [
     featured: true,
     heroImage: "/images/projects/ansa-tower-hero.jpg",
     heroImageAlt: "Ansa Tower Shahalmi Lahore Commercial Plaza exterior render",
-    coverImage: "/images/projects/ansa-tower-cover.jpg",
+    coverImage: "/images/projects/ansa_tower.webp",
     coverImageAlt: "Ansa Tower Shahalmi commercial plaza building facade",
     locationName: "Shahalmi, Fleming Road",
     city: "Lahore",
@@ -109,7 +109,7 @@ export const projects: Project[] = [
     ],
     gallery: [
       {
-        src: "/images/projects/ansa-tower-cover.jpg",
+        src: "/images/projects/ansa_tower.webp",
         alt: "Ansa Tower Shahalmi Commercial Plaza Elevation",
         category: "exterior",
       },

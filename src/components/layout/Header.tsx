@@ -52,7 +52,7 @@ export function Header() {
   const [hoveredProjectMegaMenu, setHoveredProjectMegaMenu] = useState({
     title: "Ansa Tower — Shahalmi, Lahore",
     description: "9-Story flagship commercial plaza opposite Mochi Gate. 25% Advance booking & 3-year quarterly payment plan. Handover in 2 months.",
-    image: "/images/projects/ansa-tower-cover.jpg",
+    image: "/images/projects/ansa_tower.webp",
     slug: "ansa-tower",
     badge: "Flagship Plaza",
   });
@@ -297,7 +297,7 @@ export function Header() {
                             setHoveredProjectMegaMenu({
                               title: "Ansa Tower — Shahalmi, Lahore",
                               description: "9-Story flagship commercial plaza opposite Mochi Gate. 25% Advance booking & 3-year quarterly payment plan. Handover in 2 months.",
-                              image: "/images/projects/ansa-tower-cover.jpg",
+                              image: "/images/projects/ansa_tower.webp",
                               slug: "ansa-tower",
                               badge: "Flagship Plaza",
                             })
@@ -483,7 +483,7 @@ export function Header() {
                             setHoveredProjectMegaMenu({
                               title: "Ongoing Developments",
                               description: "Active commercial plaza construction projects and custom residential developments.",
-                              image: "/images/projects/ansa-tower-cover.jpg",
+                              image: "/images/projects/ansa_tower.webp",
                               slug: "ansa-tower",
                               badge: "Ongoing Build",
                             })

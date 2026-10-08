@@ -11,7 +11,7 @@ export function NetflixServicesShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const images = [
-    "/images/projects/ansa-tower-cover.jpg",
+    "/images/projects/ansa_tower.webp",
     "/images/projects/rha-heights-cover.jpg",
     "/images/projects/f10-markaz-cover.jpg",
   ];
