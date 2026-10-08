@@ -67,7 +67,7 @@ export const projects: Project[] = [
     type: ["commercial"],
     status: "ongoing",
     featured: true,
-    heroImage: "/images/projects/ansa-tower-hero.jpg",
+    heroImage: "/images/projects/ansa_tower.webp",
     heroImageAlt: "Ansa Tower Shahalmi Lahore Commercial Plaza exterior render",
     coverImage: "/images/projects/ansa_tower.webp",
     coverImageAlt: "Ansa Tower Shahalmi commercial plaza building facade",
@@ -119,7 +119,7 @@ export const projects: Project[] = [
         category: "interior",
       },
       {
-        src: "/images/projects/ansa-tower-hero.jpg",
+        src: "/images/projects/ansa_tower.webp",
         alt: "Ansa Tower Commercial Building Facade",
         category: "exterior",
       },
